@@ -7,6 +7,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,10 +18,11 @@ import com.thinking.video.webrtc.PeerConnectionParameters;
 import com.thinking.video.webrtc.WebRtcClient;
 
 import org.webrtc.MediaStream;
+import org.webrtc.PeerConnectionFactory;
 import org.webrtc.VideoRenderer;
 import org.webrtc.VideoRendererGui;
 
-public class MainActivity extends Activity {
+public class CallActivity extends Activity {
 
     private static final String VIDEO_CODEC_VP9 = "VP9";
     private static final String AUDIO_CODEC_OPUS = "opus";
@@ -45,7 +47,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_call);
         btn_call = (Button) findViewById(R.id.btn_call);
         edt_address = (EditText) findViewById(R.id.edt_address);
         glsv_main = (GLSurfaceView) findViewById(R.id.glsv_main);
@@ -123,6 +125,8 @@ public class MainActivity extends Activity {
 
         @Override
         public void onCallReady(String callId) {
+            Log.i("yuyong", "onCallReady-->" + callId);
+            //准备完毕，发起p2p连接，这里的callId是自己的通信标识
             mClient.start("yong_yu");
         }
 

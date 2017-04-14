@@ -6,16 +6,15 @@ import android.util.Log;
 
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
-import com.github.nkzawa.socketio.client.Socket;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.webrtc.AudioSource;
 import org.webrtc.DataChannel;
 import org.webrtc.IceCandidate;
+import org.webrtc.LogPeerConnection;
 import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
-import org.webrtc.PeerConnection;
 import org.webrtc.PeerConnectionFactory;
 import org.webrtc.SdpObserver;
 import org.webrtc.SessionDescription;
@@ -33,13 +32,13 @@ public class WebRtcClient {
     private boolean[] endPoints = new boolean[MAX_PEER];
     private PeerConnectionFactory factory;
     private HashMap<String, Peer> peers = new HashMap<>();
-    private LinkedList<PeerConnection.IceServer> iceServers = new LinkedList<>();
+    private LinkedList<LogPeerConnection.IceServer> iceServers = new LinkedList<>();
     private PeerConnectionParameters pcParams;
     private MediaConstraints pcConstraints = new MediaConstraints();
     private MediaStream localMS;
     private VideoSource videoSource;
     private RtcListener mListener;
-    private Socket client;
+    private LogSocket client;
 
     /**
      * Implement this interface to be notified of events.
@@ -62,7 +61,7 @@ public class WebRtcClient {
 
     private class CreateOfferCommand implements Command {
         public void execute(String peerId, JSONObject payload) throws JSONException {
-            Log.d(TAG, "CreateOfferCommand");
+            Log.i("yuyong", "cmd->CreateOfferCommand");
             Peer peer = peers.get(peerId);
             peer.pc.createOffer(peer, pcConstraints);
         }
@@ -70,12 +69,13 @@ public class WebRtcClient {
 
     private class CreateAnswerCommand implements Command {
         public void execute(String peerId, JSONObject payload) throws JSONException {
-            Log.d(TAG, "CreateAnswerCommand");
+            Log.i("yuyong", "cmd->CreateAnswerCommand");
             Peer peer = peers.get(peerId);
             SessionDescription sdp = new SessionDescription(
                     SessionDescription.Type.fromCanonicalForm(payload.getString("type")),
                     payload.getString("sdp")
             );
+            Log.i("yuyong", "setRemoteDescription-->" + sdp.description);
             peer.pc.setRemoteDescription(peer, sdp);
             peer.pc.createAnswer(peer, pcConstraints);
         }
@@ -83,20 +83,21 @@ public class WebRtcClient {
 
     private class SetRemoteSDPCommand implements Command {
         public void execute(String peerId, JSONObject payload) throws JSONException {
-            Log.d(TAG, "SetRemoteSDPCommand");
+            Log.i("yuyong", "cmd->SetRemoteSDPCommand-->" + payload.getString("type") + "-->" + payload.getString("sdp"));
             Peer peer = peers.get(peerId);
             SessionDescription sdp = new SessionDescription(
                     SessionDescription.Type.fromCanonicalForm(payload.getString("type")),
                     payload.getString("sdp")
             );
+            Log.i("yuyong", "setRemoteDescription-->" + sdp.description);
             peer.pc.setRemoteDescription(peer, sdp);
         }
     }
 
     private class AddIceCandidateCommand implements Command {
         public void execute(String peerId, JSONObject payload) throws JSONException {
-            Log.d(TAG, "AddIceCandidateCommand");
-            PeerConnection pc = peers.get(peerId).pc;
+            Log.i("yuyong", "cmd->AddIceCandidateCommand");
+            LogPeerConnection pc = peers.get(peerId).pc;
             if (pc.getRemoteDescription() != null) {
                 IceCandidate candidate = new IceCandidate(
                         payload.getString("id"),
@@ -139,6 +140,7 @@ public class WebRtcClient {
             @Override
             public void call(Object... args) {
                 JSONObject data = (JSONObject) args[0];
+                Log.i("yuyong", "reponse:" + data.toString());
                 try {
                     String from = data.getString("from");
                     String type = data.getString("type");
@@ -151,6 +153,7 @@ public class WebRtcClient {
                         // if MAX_PEER is reach, ignore the call
                         int endPoint = findEndPoint();
                         if (endPoint != MAX_PEER) {
+                            Log.i("yuyong", "new Peer:" + from + "-->" + endPoint);
                             Peer peer = addPeer(from, endPoint);
                             peer.pc.addStream(localMS);
                             commandMap.get(type).execute(from, payload);
@@ -173,8 +176,8 @@ public class WebRtcClient {
         };
     }
 
-    private class Peer implements SdpObserver, PeerConnection.Observer {
-        private PeerConnection pc;
+    private class Peer implements SdpObserver, LogPeerConnection.Observer {
+        private LogPeerConnection pc;
         private String id;
         private int endPoint;
 
@@ -186,6 +189,7 @@ public class WebRtcClient {
                 payload.put("type", sdp.type.canonicalForm());
                 payload.put("sdp", sdp.description);
                 sendMessage(id, sdp.type.canonicalForm(), payload);
+                Log.i("yuyong", "onCreateSuccess-->" + sdp.description);
                 pc.setLocalDescription(Peer.this, sdp);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -205,19 +209,19 @@ public class WebRtcClient {
         }
 
         @Override
-        public void onSignalingChange(PeerConnection.SignalingState signalingState) {
+        public void onSignalingChange(LogPeerConnection.SignalingState signalingState) {
         }
 
         @Override
-        public void onIceConnectionChange(PeerConnection.IceConnectionState iceConnectionState) {
-            if (iceConnectionState == PeerConnection.IceConnectionState.DISCONNECTED) {
+        public void onIceConnectionChange(LogPeerConnection.IceConnectionState iceConnectionState) {
+            if (iceConnectionState == LogPeerConnection.IceConnectionState.DISCONNECTED) {
                 removePeer(id);
                 mListener.onStatusChanged("DISCONNECTED");
             }
         }
 
         @Override
-        public void onIceGatheringChange(PeerConnection.IceGatheringState iceGatheringState) {
+        public void onIceGatheringChange(LogPeerConnection.IceGatheringState iceGatheringState) {
         }
 
         @Override
@@ -256,13 +260,11 @@ public class WebRtcClient {
         }
 
         public Peer(String id, int endPoint) {
-            Log.d(TAG, "new Peer: " + id + " " + endPoint);
-            this.pc = factory.createPeerConnection(iceServers, pcConstraints, this);
+            this.pc = new LogPeerConnection(factory.createPeerConnection(iceServers, pcConstraints, this));
             this.id = id;
             this.endPoint = endPoint;
-
             pc.addStream(localMS); //, new MediaConstraints()
-
+            Log.i("yuyong", "try new Peer: " + id + " " + endPoint);
             mListener.onStatusChanged("CONNECTING");
         }
     }
@@ -292,7 +294,7 @@ public class WebRtcClient {
         MessageHandler messageHandler = new MessageHandler();
 
         try {
-            client = IO.socket(host);
+            client = new LogSocket(IO.socket(host));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -300,8 +302,8 @@ public class WebRtcClient {
         client.on("message", messageHandler.onMessage);
         client.connect();
 
-        iceServers.add(new PeerConnection.IceServer("stun:23.21.150.121"));
-        iceServers.add(new PeerConnection.IceServer("stun:stun.l.google.com:19302"));
+        iceServers.add(new LogPeerConnection.IceServer("stun:23.21.150.121"));
+        iceServers.add(new LogPeerConnection.IceServer("stun:stun.l.google.com:19302"));
 
         pcConstraints.mandatory.add(new MediaConstraints.KeyValuePair("OfferToReceiveAudio", "true"));
         pcConstraints.mandatory.add(new MediaConstraints.KeyValuePair("OfferToReceiveVideo", "true"));

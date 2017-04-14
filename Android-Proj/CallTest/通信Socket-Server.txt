@@ -1,0 +1,13 @@
+Express server listening on port 3000
+GET / 304 12.356 ms - -
+GET /stylesheets/style.css 304 35.069 ms - -
+GET /javascripts/adapter.js 304 4.961 ms - -
+GET /javascripts/rtcClient.js 304 20.277 ms - -
+GET /javascripts/app.js 304 0.812 ms - -
+-- DYkLk9ipwO7lYl0wAAAA joined --
+GET /streams.json 200 1.170 ms - 2
+-- HdH49ftuePOvkkldAAAB joined --
+-- HdH49ftuePOvkkldAAAB is ready to stream --
+GET /streams.json 200 1.205 ms - 48
+-- HdH49ftuePOvkkldAAAB left --
+-- DYkLk9ipwO7lYl0wAAAA left --
