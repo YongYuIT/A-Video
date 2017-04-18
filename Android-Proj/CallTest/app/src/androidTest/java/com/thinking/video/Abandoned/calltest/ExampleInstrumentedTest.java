@@ -1,4 +1,4 @@
-package com.thinking.video.calltest;
+package com.thinking.video.Abandoned.calltest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.thinking.video.calltest", appContext.getPackageName());
+        assertEquals("com.thinking.video.Abandoned.calltest", appContext.getPackageName());
     }
 }

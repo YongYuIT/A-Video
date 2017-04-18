@@ -61,8 +61,9 @@ public class WebRtcClient {
 
     private class CreateOfferCommand implements Command {
         public void execute(String peerId, JSONObject payload) throws JSONException {
-            Log.i("yuyong", "cmd->CreateOfferCommand");
+            Log.i("yuyong", "cmd->CreateOfferCommand-->" + peerId);
             Peer peer = peers.get(peerId);
+            //创建信元
             peer.pc.createOffer(peer, pcConstraints);
         }
     }
@@ -96,7 +97,7 @@ public class WebRtcClient {
 
     private class AddIceCandidateCommand implements Command {
         public void execute(String peerId, JSONObject payload) throws JSONException {
-            Log.i("yuyong", "cmd->AddIceCandidateCommand");
+            Log.i("yuyong", "cmd->AddIceCandidateCommand-->" + payload.getString("id") + "-->" + payload.getInt("label") + "-->" + payload.getString("candidate"));
             LogPeerConnection pc = peers.get(peerId).pc;
             if (pc.getRemoteDescription() != null) {
                 IceCandidate candidate = new IceCandidate(
@@ -198,6 +199,7 @@ public class WebRtcClient {
 
         @Override
         public void onSetSuccess() {
+            Log.i("yuyong", "onSetSuccess");
         }
 
         @Override
@@ -206,6 +208,7 @@ public class WebRtcClient {
 
         @Override
         public void onSetFailure(String s) {
+            Log.i("yuyong", "onSetFailure-->" + s);
         }
 
         @Override

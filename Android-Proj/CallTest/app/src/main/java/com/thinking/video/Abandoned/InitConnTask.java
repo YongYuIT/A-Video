@@ -1,7 +1,8 @@
-package com.thinking.video.calltest;
+package com.thinking.video.Abandoned;
 
 import android.graphics.Point;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -14,10 +15,17 @@ import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
 import org.webrtc.PeerConnection;
 import org.webrtc.PeerConnectionFactory;
+import org.webrtc.SdpObserver;
+import org.webrtc.SessionDescription;
 import org.webrtc.VideoCapturer;
 import org.webrtc.VideoCapturerAndroid;
 import org.webrtc.VideoRendererGui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 
 /**
@@ -25,6 +33,9 @@ import java.util.LinkedList;
  */
 
 public class InitConnTask extends AsyncTask {
+
+    private static final String config_remote_file = Environment.getExternalStorageState() + "/web_rtc_remote.config";
+    private static final String config_local_file = Environment.getExternalStorageState() + "/web_rtc_local.config";
 
     private static final String VIDEO_CODEC_VP9 = "VP9";
     private static final String AUDIO_CODEC_OPUS = "opus";
@@ -100,16 +111,48 @@ public class InitConnTask extends AsyncTask {
         localMS.addTrack(factory.createAudioTrack("ARDAMSa0", audioSource));
         //将本地媒体数据流添加到连接对象
         mCallCoon.addStream(localMS);
+        //创建信元
+        mCallCoon.createOffer(mSdpObserver, pcConstraints);
         return new Result("init", true);
     }
+
+    private SdpObserver mSdpObserver = new SdpObserver() {
+        @Override
+        public void onCreateFailure(String s) {
+
+        }
+
+        @Override
+        public void onCreateSuccess(SessionDescription sessionDescription) {
+            Log.i("yuyong", "SessionDescription-->\n" + sessionDescription.description);
+            //写入配置文件
+            writeFileTxt(new File(config_local_file), sessionDescription.description);
+        }
+
+        @Override
+        public void onSetSuccess() {
+
+        }
+
+        @Override
+        public void onSetFailure(String s) {
+
+        }
+    };
+
 
     private Result conn(Object... _params) {
         //连接端IP
         p_address = (String) _params[1];
         Log.i("yuyong", "ip is " + p_address);
-
+        //----------------------------------------
+        //读取配置文件
+        String info = readFileStr(new File(config_remote_file));
+        Log.i("yuyong", "readFileStr-->" + info);
+        //----------------------------------------
         return new Result("conn", true);
     }
+
 
     private PeerConnection.Observer mPCObserver = new PeerConnection.Observer() {
         @Override
@@ -153,15 +196,71 @@ public class InitConnTask extends AsyncTask {
         }
     };
 
-    private VideoCapturer getVideoCapturer() {
-        String frontCameraDeviceName = VideoCapturerAndroid.getNameOfFrontFacingDevice();
-        return VideoCapturerAndroid.create(frontCameraDeviceName);
-    }
-
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
         Result isSuccess = (Result) o;
         mListener.onInited(isSuccess);
+    }
+
+    private VideoCapturer getVideoCapturer() {
+        String frontCameraDeviceName = VideoCapturerAndroid.getNameOfFrontFacingDevice();
+        return VideoCapturerAndroid.create(frontCameraDeviceName);
+    }
+
+    private static boolean writeFileTxt(File file, String str) {
+        if (file.exists()) {
+            String file_tmp_name = file.getAbsolutePath() + ".tmp";
+            File file_tmp = new File(file_tmp_name);
+            file.renameTo(file_tmp);
+            file_tmp.delete();
+        }
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+        try {
+            file.createNewFile();
+        } catch (Exception e) {
+            return false;
+        }
+        try {
+            FileWriter fw = new FileWriter(file, true);
+            fw.write(str);
+            fw.close();
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    private static String readFileStr(File file) {
+        String result = "";
+        if (!file.exists()) {
+            return "NO_FILE";
+        }
+        FileInputStream f_in = null;
+        try {
+            f_in = new FileInputStream(file);
+        } catch (Exception e) {
+            return "IO_ERROR";
+        }
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(f_in, "UTF-8"));
+        } catch (Exception e) {
+            return "READ_TYPE_ERROR";
+        }
+        while (true) {
+            String line = "";
+            try {
+                line = reader.readLine();
+            } catch (Exception e) {
+                return "READ_TYPE_ERROR";
+            }
+            if (line == null)
+                break;
+            result += line;
+        }
+        return result;
     }
 }

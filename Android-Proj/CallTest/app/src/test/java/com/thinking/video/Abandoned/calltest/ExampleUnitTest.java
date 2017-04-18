@@ -1,4 +1,4 @@
-package com.thinking.video.calltest;
+package com.thinking.video.Abandoned.calltest;
 
 import org.junit.Test;
 

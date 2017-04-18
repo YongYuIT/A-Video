@@ -1,4 +1,4 @@
-package com.thinking.video.calltest;
+package com.thinking.video.Abandoned;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -13,6 +13,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.thinking.video.Abandoned.calltest.R;
 
 import org.webrtc.VideoRendererGui;
 
@@ -39,7 +41,7 @@ public class TestActivity extends Activity implements InitConnTask.onResutListen
         Log.i("yuyong", "inutUI start");
         setContentView(R.layout.activity_test);
         btn_init = (Button) findViewById(R.id.btn_init);
-        btn_call = (Button) findViewById(R.id.btn_call);
+        btn_call = (Button) findViewById(R.id.btn_add_remote);
         edt_address = (EditText) findViewById(R.id.edt_address);
         glsv_main = (GLSurfaceView) findViewById(R.id.glsv_main);
         //GLSurfaceView创建之后必须立即指定Renderer（即setRenderer）
@@ -78,7 +80,7 @@ public class TestActivity extends Activity implements InitConnTask.onResutListen
             mConnTask = new InitConnTask(this);
             mConnTask.execute("init", getWindowManager(), this);
         }
-        if (v.getId() == R.id.btn_call) {
+        if (v.getId() == R.id.btn_add_remote) {
             String ip = String.format("http://%s:3000/", edt_address.getText().toString().equals("") ? edt_address.getHint().toString() : edt_address.getText().toString());
             Log.i("yuyong", "try ip-->" + ip);
             mConnTask.execute("conn", ip, getWindowManager(), this);

@@ -1,4 +1,4 @@
-package com.thinking.video.calltest;
+package com.thinking.video.webrtc;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -14,11 +14,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.thinking.video.webrtc.PeerConnectionParameters;
-import com.thinking.video.webrtc.WebRtcClient;
+import com.thinking.video.Abandoned.calltest.R;
 
 import org.webrtc.MediaStream;
-import org.webrtc.PeerConnectionFactory;
 import org.webrtc.VideoRenderer;
 import org.webrtc.VideoRendererGui;
 
@@ -48,7 +46,7 @@ public class CallActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         setContentView(R.layout.activity_call);
-        btn_call = (Button) findViewById(R.id.btn_call);
+        btn_call = (Button) findViewById(R.id.btn_add_remote);
         edt_address = (EditText) findViewById(R.id.edt_address);
         glsv_main = (GLSurfaceView) findViewById(R.id.glsv_main);
         //GLSurfaceView创建之后必须立即指定Renderer（即setRenderer）
@@ -107,7 +105,7 @@ public class CallActivity extends Activity {
     };
 
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_call) {
+        if (v.getId() == R.id.btn_add_remote) {
             p_address = String.format("http://%s:3000/", edt_address.getText().toString().equals("") ? edt_address.getHint().toString() : edt_address.getText().toString());
             Point displaySize = new Point();
             getWindowManager().getDefaultDisplay().getSize(displaySize);
