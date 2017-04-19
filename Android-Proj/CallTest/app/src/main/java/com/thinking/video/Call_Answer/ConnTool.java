@@ -171,9 +171,10 @@ public class ConnTool {
         //初始化连接框架
         PeerConnectionFactory.initializeAndroidGlobals(_params[1], true, true, params.videoCodecHwAcceleration, VideoRendererGui.getEGLContext());
         factory = new PeerConnectionFactory();
-        //设置穿透服务器
-        iceServers.add(new PeerConnection.IceServer("stun:23.21.150.121"));
-        iceServers.add(new PeerConnection.IceServer("stun:stun.l.google.com:19302"));
+        //设置穿透服务器（STUN服务器）
+        //iceServers.add(new PeerConnection.IceServer("stun:23.21.150.121"));
+        //iceServers.add(new PeerConnection.IceServer("stun:stun.l.google.com:19302"));
+        iceServers.add(new PeerConnection.IceServer("stun:stunserver.org"));
         //媒体描述
         pcConstraints.mandatory.add(new MediaConstraints.KeyValuePair("OfferToReceiveAudio", "true"));
         pcConstraints.mandatory.add(new MediaConstraints.KeyValuePair("OfferToReceiveVideo", "true"));
