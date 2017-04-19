@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.thinking.video.webrtc.PeerConnectionParameters;
 
+import org.json.JSONObject;
 import org.webrtc.AudioSource;
 import org.webrtc.DataChannel;
 import org.webrtc.IceCandidate;
@@ -39,6 +40,8 @@ import java.util.concurrent.Executors;
 public class ConnTool {
     protected static final String config_remote_file = Environment.getExternalStorageDirectory().toString() + "/web_rtc_remote.config";
     protected static final String config_local_file = Environment.getExternalStorageDirectory().toString() + "/web_rtc_local.config";
+    protected static final String config_local_params_file = Environment.getExternalStorageDirectory().toString() + "/web_rtc_local_params.config";
+    protected static final String config_remote_params_file = Environment.getExternalStorageDirectory().toString() + "/web_rtc_remote_params.config";
 
     private static final ExecutorService pool = Executors.newSingleThreadExecutor();
 
@@ -97,8 +100,13 @@ public class ConnTool {
             public void run() {
                 Class ConnTool_class = mClass;
                 try {
-                    Method some_method = ConnTool_class.getMethod("method", Object[].class);
-                    some_method.invoke(ConnTool.this, params);
+                    if (1 == 1/*for test*/) {
+                        Method[] tmps = ConnTool_class.getMethods();
+                        int i = tmps.length;
+                    }
+                    Method some_method = ConnTool_class.getMethod(method, Object[].class);
+                    some_method.invoke(ConnTool.this, new Object[]{params});
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -107,7 +115,37 @@ public class ConnTool {
         });
     }
 
-    private void init(Object... _params) {
+    public void serParams(Object... _params) {
+        String info = readFileStr(new File(config_remote_params_file));
+        String infos[] = info.split("########");
+        Message msg = new Message();
+        msg.what = 1001;
+        for (int i = 0; i < infos.length; i++) {
+            if (infos[i].equals("")||infos[i].equals("\n"))
+                continue;
+            Log.i("yuyong", "serParams-->" + infos[i]);
+            try {
+                JSONObject params = new JSONObject(infos[i]);
+                IceCandidate candidate = new IceCandidate(
+                        params.getString("id"),
+                        params.getInt("label"),
+                        params.getString("candidate")
+                );
+                mCallCoon.addIceCandidate(candidate);
+                msg.obj = new Result("answer-->serParams", "Success", true);
+            } catch (Exception e) {
+                e.printStackTrace();
+                msg.obj = new Result("answer-->serParams", "Fail", true);
+                break;
+            }
+        }
+        mHandler.sendMessage(msg);
+
+    }
+
+    public void init(Object... _params) {
+        //清空缓存信息
+        deleteCache();
         //获取屏幕分辨率
         Point displaySize = new Point();
         ((WindowManager) _params[0]).getDefaultDisplay().getSize(displaySize);
@@ -140,7 +178,7 @@ public class ConnTool {
         mCallCoon.addStream(localMS);
 
         Message msg = new Message();
-        msg.obj = new Result("initLocal", "", true);
+        msg.obj = new Result("init", "", true);
         msg.what = 1001;
         mHandler.sendMessage(msg);
     }
@@ -169,6 +207,18 @@ public class ConnTool {
         @Override
         public void onIceCandidate(IceCandidate iceCandidate) {
             Log.i("yuyong", "onIceCandidate-->" + iceCandidate.sdp);
+            //追加填写协商信息
+            String info = "";
+            try {
+                JSONObject data = new JSONObject();
+                data.put("label", iceCandidate.sdpMLineIndex);
+                data.put("id", iceCandidate.sdpMid);
+                data.put("candidate", iceCandidate.sdp);
+                info = data.toString();
+            } catch (Exception e) {
+                Log.i("yuyong", "onIceCandidate-->recoed error-->" + e.getMessage());
+            }
+            writeFileTxtAdd(new File(config_local_params_file), info + "########");
         }
 
         @Override
@@ -190,6 +240,39 @@ public class ConnTool {
     private static VideoCapturer getVideoCapturer() {
         String frontCameraDeviceName = VideoCapturerAndroid.getNameOfFrontFacingDevice();
         return VideoCapturerAndroid.create(frontCameraDeviceName);
+    }
+
+    private static void deleteCache() {
+        File[] files = new File[]{new File(config_remote_file), new File(config_local_params_file), new File(config_local_file)};
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].exists()) {
+                String file_tmp_name = files[i].getAbsolutePath() + ".tmp";
+                File file_tmp = new File(file_tmp_name);
+                files[i].renameTo(file_tmp);
+                file_tmp.delete();
+            }
+        }
+    }
+
+    private static String writeFileTxtAdd(File file, String str) {
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (Exception e) {
+                return "CREATE_FAIL";
+            }
+        }
+        try {
+            FileWriter fw = new FileWriter(file, true);
+            fw.write(str);
+            fw.close();
+        } catch (Exception e) {
+            return "WRITE_ERROR";
+        }
+        return "SUCCESS";
     }
 
     protected static String writeFileTxt(File file, String str) {

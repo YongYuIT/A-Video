@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.thinking.video.Abandoned.calltest.com.thinking.video.Abandoned.TestActivity">
+    tools:context="com.thinking.video.Abandoned.TestActivity">
 
     <android.opengl.GLSurfaceView
         android:id="@+id/glsv_main"

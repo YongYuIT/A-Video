@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.thinking.video.Abandoned.calltest">
+    package="com.thinking.video">
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -21,6 +21,7 @@
         <activity
             android:name="com.thinking.video.webrtc.CallActivity"
             android:configChanges="orientation|screenSize"
+            android:label="CallActivity"
             android:screenOrientation="fullUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +29,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.thinking.video.Call_Answer.CallActivity" />
-        <activity android:name="com.thinking.video.Call_Answer.AnswerActivity"></activity>
+        <activity
+            android:name="com.thinking.video.Call_Answer.CallActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="Call_Answer_CallActivity"
+            android:screenOrientation="fullUser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.thinking.video.Call_Answer.AnswerActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="Call_Answer_AnswerActivity"
+            android:screenOrientation="fullUser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

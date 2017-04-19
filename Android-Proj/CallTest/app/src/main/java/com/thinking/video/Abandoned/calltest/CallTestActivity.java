@@ -14,7 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-;import org.webrtc.VideoRendererGui;
+;import com.thinking.video.R;
+
+import org.webrtc.VideoRendererGui;
 
 public class CallTestActivity extends Activity implements CoonTools.onResutListener {
 

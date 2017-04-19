@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.thinking.video.Abandoned.calltest.R;
+import com.thinking.video.R;
 
 import org.webrtc.VideoRendererGui;
 

@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.thinking.video.Abandoned.calltest.R;
+import com.thinking.video.R;
 
 import org.webrtc.MediaStream;
 import org.webrtc.VideoRenderer;
@@ -135,6 +135,7 @@ public class CallActivity extends Activity {
 
         @Override
         public void onLocalStream(MediaStream localStream) {
+            Log.i("yuyong", "onLocalStream");
             if (localRender == null) {
                 localRender = VideoRendererGui.create(LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType, true);
             }
@@ -144,6 +145,7 @@ public class CallActivity extends Activity {
 
         @Override
         public void onRemoveRemoteStream(int endPoint) {
+            Log.i("yuyong", "onRemoveRemoteStream");
             VideoRendererGui.update(localRender, LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType);
         }
     };
