@@ -33,7 +33,7 @@
             android:name="com.thinking.video.Call_Answer.CallActivity"
             android:configChanges="orientation|screenSize"
             android:label="Call_Answer_CallActivity"
-            android:screenOrientation="fullUser">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +44,7 @@
             android:name="com.thinking.video.Call_Answer.AnswerActivity"
             android:configChanges="orientation|screenSize"
             android:label="Call_Answer_AnswerActivity"
-            android:screenOrientation="fullUser">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

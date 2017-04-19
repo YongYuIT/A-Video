@@ -194,9 +194,13 @@ public class ConnTool {
         //将本地媒体数据流添加到连接对象
         mCallCoon.addStream(localMS);
         //输出
+        if (remoteRender == null) {
+            remoteRender = VideoRendererGui.create(REMOTE_X, REMOTE_Y, REMOTE_WIDTH, REMOTE_HEIGHT, scalingType, false);
+        }
         if (localRender == null) {
             localRender = VideoRendererGui.create(LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType, true);
         }
+        Log.i("yuyong_out_put", "localRender addRenderer");
         localMS.videoTracks.get(0).addRenderer(new VideoRenderer(localRender));
         VideoRendererGui.update(localRender, LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType);
 
@@ -210,19 +214,10 @@ public class ConnTool {
         @Override
         public void onAddStream(MediaStream mediaStream) {
             Log.i("yuyong", "onAddStream-->" + mediaStream.label());
-            if (remoteRender == null) {
-                remoteRender = VideoRendererGui.create(
-                        REMOTE_X, REMOTE_Y,
-                        REMOTE_WIDTH, REMOTE_HEIGHT, scalingType, false);
-            }
+            Log.i("yuyong_out_put", "remoteRender addRenderer");
             mediaStream.videoTracks.get(0).addRenderer(new VideoRenderer(remoteRender));
-            VideoRendererGui.update(remoteRender,
-                    REMOTE_X, REMOTE_Y,
-                    REMOTE_WIDTH, REMOTE_HEIGHT, scalingType);
-            VideoRendererGui.update(localRender,
-                    LOCAL_X_CONNECTED, LOCAL_Y_CONNECTED,
-                    LOCAL_WIDTH_CONNECTED, LOCAL_HEIGHT_CONNECTED,
-                    scalingType);
+            VideoRendererGui.update(remoteRender, REMOTE_X, REMOTE_Y, REMOTE_WIDTH, REMOTE_HEIGHT, scalingType);
+            VideoRendererGui.update(localRender, LOCAL_X_CONNECTED, LOCAL_Y_CONNECTED, LOCAL_WIDTH_CONNECTED, LOCAL_HEIGHT_CONNECTED, scalingType);
         }
 
         @Override
