@@ -1,224 +1,221 @@
-04-18 11:12:00.941 21875-21875/com.thinking.video.Abandoned.calltest I/yuyong_socket: on-->event:id
-04-18 11:12:00.941 21875-21875/com.thinking.video.Abandoned.calltest I/yuyong_socket: on-->event:message
-04-18 11:12:01.582 21875-22071/com.thinking.video.Abandoned.calltest I/yuyong: onCallReady-->0GiMTNO5Ce4irK0eAAAB
-04-18 11:12:01.993 21875-22071/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:readyToStream-->{"name":"yong_yu"}
-04-18 11:12:07.133 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"init","payload":null,"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.134 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong: new Peer:E3cwAsgS5ozlLDpUAAAA-->0
-04-18 11:12:07.161 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: LogPeerConnection
-04-18 11:12:07.161 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addStream
-04-18 11:12:07.162 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong: try new Peer: E3cwAsgS5ozlLDpUAAAA 0
-04-18 11:12:07.162 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addStream
-04-18 11:12:07.162 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong: cmd->CreateOfferCommand-->E3cwAsgS5ozlLDpUAAAA
-04-18 11:12:07.162 21875-22175/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: createOffer
-04-18 11:12:07.167 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"offer","payload":{"type":"offer","sdp":"v=0\r\no=- 1767625836092110712 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE audio video\r\na=msid-semantic: WMS ARDAMS\r\nm=audio 9 RTP\/SAVPF 111 103 9 102 0 8 106 105 13 127 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:WrL23Pw1Gjj2mllK\r\na=ice-pwd:VIJBuoPwse33Td7wgtIsak9a\r\na=fingerprint:sha-1 AF:13:C5:8B:59:16:A0:E8:25:B3:B4:AE:46:C6:61:9D:BD:BE:58:86\r\na=setup:actpass\r\na=mid:audio\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=sendrecv\r\na=rtcp-mux\r\na=rtpmap:111 opus\/48000\/2\r\na=fmtp:111 minptime=10; useinbandfec=1\r\na=rtpmap:103 ISAC\/16000\r\na=rtpmap:9 G722\/8000\r\na=rtpmap:102 ILBC\/8000\r\na=rtpmap:0 PCMU\/8000\r\na=rtpmap:8 PCMA\/8000\r\na=rtpmap:106 CN\/32000\r\na=rtpmap:105 CN\/16000\r\na=rtpmap:13 CN\/8000\r\na=rtpmap:127 red\/8000\r\na=rtpmap:126 telephone-event\/8000\r\na=maxptime:60\r\na=ssrc:2275974164 cname:0whK9EoHhYUeoPXt\r\na=ssrc:2275974164 msid:ARDAMS ARDAMSa0\r\na=ssrc:2275974164 mslabel:ARDAMS\r\na=ssrc:2275974164 label:ARDAMSa0\r\nm=video 9 RTP\/SAVPF 100 116 117 96\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:WrL23Pw1Gjj2mllK\r\na=ice-pwd:VIJBuoPwse33Td7wgtIsak9a\r\na=fingerprint:sha-1 AF:13:C5:8B:59:16:A0:E8:25:B3:B4:AE:46:C6:61:9D:BD:BE:58:86\r\na=setup:actpass\r\na=mid:video\r\na=extmap:2 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=sendrecv\r\na=rtcp-mux\r\na=rtpmap:100 VP8\/90000\r\na=rtcp-fb:100 ccm fir\r\na=rtcp-fb:100 nack\r\na=rtcp-fb:100 nack pli\r\na=rtcp-fb:100 goog-remb\r\na=rtpmap:116 red\/90000\r\na=rtpmap:117 ulpfec\/90000\r\na=rtpmap:96 rtx\/90000\r\na=fmtp:96 apt=100\r\na=ssrc-group:FID 3584097128 2347767942\r\na=ssrc:3584097128 cname:0whK9EoHhYUeoPXt\r\na=ssrc:3584097128 msid:ARDAMS ARDAMSv0\r\na=ssrc:3584097128 mslabel:ARDAMS\r\na=ssrc:3584097128 label:ARDAMSv0\r\na=ssrc:2347767942 cname:0whK9EoHhYUeoPXt\r\na=ssrc:2347767942 msid:ARDAMS ARDAMSv0\r\na=ssrc:2347767942 mslabel:ARDAMS\r\na=ssrc:2347767942 label:ARDAMSv0\r\n"}}
-04-18 11:12:07.167 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong: onCreateSuccess-->v=0
-                                                                     o=- 1767625836092110712 2 IN IP4 127.0.0.1
-                                                                     s=-
-                                                                     t=0 0
-                                                                     a=group:BUNDLE audio video
-                                                                     a=msid-semantic: WMS ARDAMS
-                                                                     m=audio 9 RTP/SAVPF 111 103 9 102 0 8 106 105 13 127 126
-                                                                     c=IN IP4 0.0.0.0
-                                                                     a=rtcp:9 IN IP4 0.0.0.0
-                                                                     a=ice-ufrag:WrL23Pw1Gjj2mllK
-                                                                     a=ice-pwd:VIJBuoPwse33Td7wgtIsak9a
-                                                                     a=fingerprint:sha-1 AF:13:C5:8B:59:16:A0:E8:25:B3:B4:AE:46:C6:61:9D:BD:BE:58:86
-                                                                     a=setup:actpass
-                                                                     a=mid:audio
-                                                                     a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
-                                                                     a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
-                                                                     a=sendrecv
-                                                                     a=rtcp-mux
-                                                                     a=rtpmap:111 opus/48000/2
-                                                                     a=fmtp:111 minptime=10; useinbandfec=1
-                                                                     a=rtpmap:103 ISAC/16000
-                                                                     a=rtpmap:9 G722/8000
-                                                                     a=rtpmap:102 ILBC/8000
-                                                                     a=rtpmap:0 PCMU/8000
-                                                                     a=rtpmap:8 PCMA/8000
-                                                                     a=rtpmap:106 CN/32000
-                                                                     a=rtpmap:105 CN/16000
-                                                                     a=rtpmap:13 CN/8000
-                                                                     a=rtpmap:127 red/8000
-                                                                     a=rtpmap:126 telephone-event/8000
-                                                                     a=maxptime:60
-                                                                     a=ssrc:2275974164 cname:0whK9EoHhYUeoPXt
-                                                                     a=ssrc:2275974164 msid:ARDAMS ARDAMSa0
-                                                                     a=ssrc:2275974164 mslabel:ARDAMS
-                                                                     a=ssrc:2275974164 label:ARDAMSa0
-                                                                     m=video 9 RTP/SAVPF 100 116 117 96
-                                                                     c=IN IP4 0.0.0.0
-                                                                     a=rtcp:9 IN IP4 0.0.0.0
-                                                                     a=ice-ufrag:WrL23Pw1Gjj2mllK
-                                                                     a=ice-pwd:VIJBuoPwse33Td7wgtIsak9a
-                                                                     a=fingerprint:sha-1 AF:13:C5:8B:59:16:A0:E8:25:B3:B4:AE:46:C6:61:9D:BD:BE:58:86
-                                                                     a=setup:actpass
-                                                                     a=mid:video
-                                                                     a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
-                                                                     a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
-                                                                     a=sendrecv
-                                                                     a=rtcp-mux
-                                                                     a=rtpmap:100 VP8/90000
-                                                                     a=rtcp-fb:100 ccm fir
-                                                                     a=rtcp-fb:100 nack
-                                                                     a=rtcp-fb:100 nack pli
-                                                                     a=rtcp-fb:100 goog-remb
-                                                                     a=rtpmap:116 red/90000
-                                                                     a=rtpmap:117 ulpfec/90000
-                                                                     a=rtpmap:96 rtx/90000
-                                                                     a=fmtp:96 apt=100
-                                                                     a=ssrc-group:FID 3584097128 2347767942
-                                                                     a=ssrc:3584097128 cname:0whK9EoHhYUeoPXt
-                                                                     a=ssrc:3584097128 msid:ARDAMS ARDAMSv0
-                                                                     a=ssrc:3584097128 mslabel:ARDAMS
-                                                                     a=ssrc:3584097128 label:ARDAMSv0
-                                                                     a=ssrc:2347767942 cname:0whK9EoHhYUeoPXt
-                                                                     a=ssrc:2347767942 msid:ARDAMS ARDAMSv0
-                                                                     a=ssrc:2347767942 mslabel:ARDAMS
-                                                                     a=ssrc:2347767942 label:ARDAMSv0
-04-18 11:12:07.169 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: setLocalDescription
-04-18 11:12:07.483 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong: onSetSuccess
-04-18 11:12:07.489 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:97459110 1 udp 2122260223 192.168.0.120 59046 typ host generation 0"}}
-04-18 11:12:07.497 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:97459110 2 udp 2122260222 192.168.0.120 42557 typ host generation 0"}}
-04-18 11:12:07.498 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":1,"id":"video","candidate":"candidate:97459110 1 udp 2122260223 192.168.0.120 42175 typ host generation 0"}}
-04-18 11:12:07.499 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":1,"id":"video","candidate":"candidate:97459110 2 udp 2122260222 192.168.0.120 58768 typ host generation 0"}}
-04-18 11:12:07.587 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:1263331158 1 tcp 1518280447 192.168.0.120 51442 typ host tcptype passive generation 0"}}
-04-18 11:12:07.588 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:1263331158 2 tcp 1518280446 192.168.0.120 35117 typ host tcptype passive generation 0"}}
-04-18 11:12:07.590 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":1,"id":"video","candidate":"candidate:1263331158 1 tcp 1518280447 192.168.0.120 45910 typ host tcptype passive generation 0"}}
-04-18 11:12:07.597 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"E3cwAsgS5ozlLDpUAAAA","type":"candidate","payload":{"label":1,"id":"video","candidate":"candidate:1263331158 2 tcp 1518280446 192.168.0.120 49901 typ host tcptype passive generation 0"}}
-04-18 11:12:07.679 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"answer","payload":{"type":"answer","sdp":"v=0\r\no=- 588002250085355351 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE audio video\r\na=msid-semantic: WMS\r\nm=audio 9 RTP\/SAVPF 111 103 9 0 8 106 105 13 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:CSX24PHiqAnDB4UJ\r\na=ice-pwd:yDQng6KXNpVVZ7Yd9tuEtLT9\r\na=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75\r\na=setup:active\r\na=mid:audio\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=recvonly\r\na=rtcp-mux\r\na=rtpmap:111 opus\/48000\/2\r\na=fmtp:111 minptime=10; useinbandfec=1\r\na=rtpmap:103 ISAC\/16000\r\na=rtpmap:9 G722\/8000\r\na=rtpmap:0 PCMU\/8000\r\na=rtpmap:8 PCMA\/8000\r\na=rtpmap:106 CN\/32000\r\na=rtpmap:105 CN\/16000\r\na=rtpmap:13 CN\/8000\r\na=rtpmap:126 telephone-event\/8000\r\na=maxptime:60\r\nm=video 9 RTP\/SAVPF 100 116 117 96\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:CSX24PHiqAnDB4UJ\r\na=ice-pwd:yDQng6KXNpVVZ7Yd9tuEtLT9\r\na=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75\r\na=setup:active\r\na=mid:video\r\na=extmap:2 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=recvonly\r\na=rtcp-mux\r\na=rtpmap:100 VP8\/90000\r\na=rtcp-fb:100 ccm fir\r\na=rtcp-fb:100 nack\r\na=rtcp-fb:100 nack pli\r\na=rtcp-fb:100 goog-remb\r\na=rtpmap:116 red\/90000\r\na=rtpmap:117 ulpfec\/90000\r\na=rtpmap:96 rtx\/90000\r\na=fmtp:96 apt=100\r\n"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.679 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->SetRemoteSDPCommand-->answer-->v=0
-                                                                     o=- 588002250085355351 2 IN IP4 127.0.0.1
-                                                                     s=-
-                                                                     t=0 0
-                                                                     a=group:BUNDLE audio video
-                                                                     a=msid-semantic: WMS
-                                                                     m=audio 9 RTP/SAVPF 111 103 9 0 8 106 105 13 126
-                                                                     c=IN IP4 0.0.0.0
-                                                                     a=rtcp:9 IN IP4 0.0.0.0
-                                                                     a=ice-ufrag:CSX24PHiqAnDB4UJ
-                                                                     a=ice-pwd:yDQng6KXNpVVZ7Yd9tuEtLT9
-                                                                     a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
-                                                                     a=setup:active
-                                                                     a=mid:audio
-                                                                     a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
-                                                                     a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
-                                                                     a=recvonly
-                                                                     a=rtcp-mux
-                                                                     a=rtpmap:111 opus/48000/2
-                                                                     a=fmtp:111 minptime=10; useinbandfec=1
-                                                                     a=rtpmap:103 ISAC/16000
-                                                                     a=rtpmap:9 G722/8000
-                                                                     a=rtpmap:0 PCMU/8000
-                                                                     a=rtpmap:8 PCMA/8000
-                                                                     a=rtpmap:106 CN/32000
-                                                                     a=rtpmap:105 CN/16000
-                                                                     a=rtpmap:13 CN/8000
-                                                                     a=rtpmap:126 telephone-event/8000
-                                                                     a=maxptime:60
-                                                                     m=video 9 RTP/SAVPF 100 116 117 96
-                                                                     c=IN IP4 0.0.0.0
-                                                                     a=rtcp:9 IN IP4 0.0.0.0
-                                                                     a=ice-ufrag:CSX24PHiqAnDB4UJ
-                                                                     a=ice-pwd:yDQng6KXNpVVZ7Yd9tuEtLT9
-                                                                     a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
-                                                                     a=setup:active
-                                                                     a=mid:video
-                                                                     a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
-                                                                     a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
-                                                                     a=recvonly
-                                                                     a=rtcp-mux
-                                                                     a=rtpmap:100 VP8/90000
-                                                                     a=rtcp-fb:100 ccm fir
-                                                                     a=rtcp-fb:100 nack
-                                                                     a=rtcp-fb:100 nack pli
-                                                                     a=rtcp-fb:100 goog-remb
-                                                                     a=rtpmap:116 red/90000
-                                                                     a=rtpmap:117 ulpfec/90000
-                                                                     a=rtpmap:96 rtx/90000
-                                                                     a=fmtp:96 apt=100
-04-18 11:12:07.679 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: setRemoteDescription-->v=0
-                                                                     o=- 588002250085355351 2 IN IP4 127.0.0.1
-                                                                     s=-
-                                                                     t=0 0
-                                                                     a=group:BUNDLE audio video
-                                                                     a=msid-semantic: WMS
-                                                                     m=audio 9 RTP/SAVPF 111 103 9 0 8 106 105 13 126
-                                                                     c=IN IP4 0.0.0.0
-                                                                     a=rtcp:9 IN IP4 0.0.0.0
-                                                                     a=ice-ufrag:CSX24PHiqAnDB4UJ
-                                                                     a=ice-pwd:yDQng6KXNpVVZ7Yd9tuEtLT9
-                                                                     a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
-                                                                     a=setup:active
-                                                                     a=mid:audio
-                                                                     a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
-                                                                     a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
-                                                                     a=recvonly
-                                                                     a=rtcp-mux
-                                                                     a=rtpmap:111 opus/48000/2
-                                                                     a=fmtp:111 minptime=10; useinbandfec=1
-                                                                     a=rtpmap:103 ISAC/16000
-                                                                     a=rtpmap:9 G722/8000
-                                                                     a=rtpmap:0 PCMU/8000
-                                                                     a=rtpmap:8 PCMA/8000
-                                                                     a=rtpmap:106 CN/32000
-                                                                     a=rtpmap:105 CN/16000
-                                                                     a=rtpmap:13 CN/8000
-                                                                     a=rtpmap:126 telephone-event/8000
-                                                                     a=maxptime:60
-                                                                     m=video 9 RTP/SAVPF 100 116 117 96
-                                                                     c=IN IP4 0.0.0.0
-                                                                     a=rtcp:9 IN IP4 0.0.0.0
-                                                                     a=ice-ufrag:CSX24PHiqAnDB4UJ
-                                                                     a=ice-pwd:yDQng6KXNpVVZ7Yd9tuEtLT9
-                                                                     a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
-                                                                     a=setup:active
-                                                                     a=mid:video
-                                                                     a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
-                                                                     a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
-                                                                     a=recvonly
-                                                                     a=rtcp-mux
-                                                                     a=rtpmap:100 VP8/90000
-                                                                     a=rtcp-fb:100 ccm fir
-                                                                     a=rtcp-fb:100 nack
-                                                                     a=rtcp-fb:100 nack pli
-                                                                     a=rtcp-fb:100 goog-remb
-                                                                     a=rtpmap:116 red/90000
-                                                                     a=rtpmap:117 ulpfec/90000
-                                                                     a=rtpmap:96 rtx/90000
-                                                                     a=fmtp:96 apt=100
-04-18 11:12:07.679 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: setRemoteDescription
-04-18 11:12:07.780 21875-22051/com.thinking.video.Abandoned.calltest I/yuyong: onSetSuccess
-04-18 11:12:07.782 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:1242523723 1 udp 2122255103 2001::9d38:953c:406:1c2c:3f57:ff8e 52208 typ host generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.782 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:1242523723 1 udp 2122255103 2001::9d38:953c:406:1c2c:3f57:ff8e 52208 typ host generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.782 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.784 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.793 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:3442505084 1 udp 2122194687 192.168.163.1 52209 typ host generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.793 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:3442505084 1 udp 2122194687 192.168.163.1 52209 typ host generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.793 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.795 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.796 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:2954657374 1 udp 2122129151 192.168.239.1 52210 typ host generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.797 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:2954657374 1 udp 2122129151 192.168.239.1 52210 typ host generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.797 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.798 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.800 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:1356517016 1 udp 2122063615 192.168.0.113 52211 typ host generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.800 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:1356517016 1 udp 2122063615 192.168.0.113 52211 typ host generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.800 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.801 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.803 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:76321979 1 tcp 1518275327 2001::9d38:953c:406:1c2c:3f57:ff8e 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.803 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:76321979 1 tcp 1518275327 2001::9d38:953c:406:1c2c:3f57:ff8e 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.803 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.806 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.809 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:2209581452 1 tcp 1518214911 192.168.163.1 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.809 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:2209581452 1 tcp 1518214911 192.168.163.1 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.809 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.811 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.812 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:4271866542 1 tcp 1518149375 192.168.239.1 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.813 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:4271866542 1 tcp 1518149375 192.168.239.1 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.813 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.814 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:07.816 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:509162088 1 tcp 1518083839 192.168.0.113 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ"},"from":"E3cwAsgS5ozlLDpUAAAA"}
-04-18 11:12:07.817 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:509162088 1 tcp 1518083839 192.168.0.113 9 typ host tcptype active generation 0 ufrag CSX24PHiqAnDB4UJ
-04-18 11:12:07.817 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
-04-18 11:12:07.818 21875-22194/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
-04-18 11:12:19.895 21875-21875/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: dispose
+04-19 15:31:04.728 3730-3730/com.thinking.video.Abandoned.calltest I/yuyong_socket: on-->event:id
+04-19 15:31:04.729 3730-3730/com.thinking.video.Abandoned.calltest I/yuyong_socket: on-->event:message
+04-19 15:31:04.970 3730-6737/com.thinking.video.Abandoned.calltest I/yuyong: onCallReady-->MHR140m7A6JscYkGAAAB
+04-19 15:31:05.305 3730-6737/com.thinking.video.Abandoned.calltest I/yuyong: onLocalStream
+04-19 15:31:05.328 3730-6737/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:readyToStream-->{"name":"yong_yu"}
+04-19 15:31:17.095 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"init","payload":null,"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.095 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong: new Peer:W6zw7e_9mVz0X8TxAAAA-->0
+04-19 15:31:17.113 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: LogPeerConnection
+04-19 15:31:17.113 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addStream
+04-19 15:31:17.114 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong: try new Peer: W6zw7e_9mVz0X8TxAAAA 0
+04-19 15:31:17.114 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addStream
+04-19 15:31:17.115 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong: cmd->CreateOfferCommand-->W6zw7e_9mVz0X8TxAAAA
+04-19 15:31:17.115 3730-6909/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: createOffer
+04-19 15:31:17.119 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"W6zw7e_9mVz0X8TxAAAA","type":"offer","payload":{"type":"offer","sdp":"v=0\r\no=- 3937968205793230135 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE audio video\r\na=msid-semantic: WMS ARDAMS\r\nm=audio 9 RTP\/SAVPF 111 103 9 102 0 8 106 105 13 127 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:RwAGZvqZzO+pk2Lr\r\na=ice-pwd:MG5gTDUD4YSLclfoyq4YplZU\r\na=fingerprint:sha-1 D2:98:A1:F3:7E:3A:A7:4D:16:8E:26:A7:48:E7:7C:D7:EE:ED:12:49\r\na=setup:actpass\r\na=mid:audio\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=sendrecv\r\na=rtcp-mux\r\na=rtpmap:111 opus\/48000\/2\r\na=fmtp:111 minptime=10; useinbandfec=1\r\na=rtpmap:103 ISAC\/16000\r\na=rtpmap:9 G722\/8000\r\na=rtpmap:102 ILBC\/8000\r\na=rtpmap:0 PCMU\/8000\r\na=rtpmap:8 PCMA\/8000\r\na=rtpmap:106 CN\/32000\r\na=rtpmap:105 CN\/16000\r\na=rtpmap:13 CN\/8000\r\na=rtpmap:127 red\/8000\r\na=rtpmap:126 telephone-event\/8000\r\na=maxptime:60\r\na=ssrc:230521117 cname:kf4xmmRJ009aEzji\r\na=ssrc:230521117 msid:ARDAMS ARDAMSa0\r\na=ssrc:230521117 mslabel:ARDAMS\r\na=ssrc:230521117 label:ARDAMSa0\r\nm=video 9 RTP\/SAVPF 100 116 117 96\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:RwAGZvqZzO+pk2Lr\r\na=ice-pwd:MG5gTDUD4YSLclfoyq4YplZU\r\na=fingerprint:sha-1 D2:98:A1:F3:7E:3A:A7:4D:16:8E:26:A7:48:E7:7C:D7:EE:ED:12:49\r\na=setup:actpass\r\na=mid:video\r\na=extmap:2 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=sendrecv\r\na=rtcp-mux\r\na=rtpmap:100 VP8\/90000\r\na=rtcp-fb:100 ccm fir\r\na=rtcp-fb:100 nack\r\na=rtcp-fb:100 nack pli\r\na=rtcp-fb:100 goog-remb\r\na=rtpmap:116 red\/90000\r\na=rtpmap:117 ulpfec\/90000\r\na=rtpmap:96 rtx\/90000\r\na=fmtp:96 apt=100\r\na=ssrc-group:FID 2351509040 3556311957\r\na=ssrc:2351509040 cname:kf4xmmRJ009aEzji\r\na=ssrc:2351509040 msid:ARDAMS ARDAMSv0\r\na=ssrc:2351509040 mslabel:ARDAMS\r\na=ssrc:2351509040 label:ARDAMSv0\r\na=ssrc:3556311957 cname:kf4xmmRJ009aEzji\r\na=ssrc:3556311957 msid:ARDAMS ARDAMSv0\r\na=ssrc:3556311957 mslabel:ARDAMS\r\na=ssrc:3556311957 label:ARDAMSv0\r\n"}}
+04-19 15:31:17.119 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong: onCreateSuccess-->v=0
+                                                                             o=- 3937968205793230135 2 IN IP4 127.0.0.1
+                                                                             s=-
+                                                                             t=0 0
+                                                                             a=group:BUNDLE audio video
+                                                                             a=msid-semantic: WMS ARDAMS
+                                                                             m=audio 9 RTP/SAVPF 111 103 9 102 0 8 106 105 13 127 126
+                                                                             c=IN IP4 0.0.0.0
+                                                                             a=rtcp:9 IN IP4 0.0.0.0
+                                                                             a=ice-ufrag:RwAGZvqZzO+pk2Lr
+                                                                             a=ice-pwd:MG5gTDUD4YSLclfoyq4YplZU
+                                                                             a=fingerprint:sha-1 D2:98:A1:F3:7E:3A:A7:4D:16:8E:26:A7:48:E7:7C:D7:EE:ED:12:49
+                                                                             a=setup:actpass
+                                                                             a=mid:audio
+                                                                             a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+                                                                             a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+                                                                             a=sendrecv
+                                                                             a=rtcp-mux
+                                                                             a=rtpmap:111 opus/48000/2
+                                                                             a=fmtp:111 minptime=10; useinbandfec=1
+                                                                             a=rtpmap:103 ISAC/16000
+                                                                             a=rtpmap:9 G722/8000
+                                                                             a=rtpmap:102 ILBC/8000
+                                                                             a=rtpmap:0 PCMU/8000
+                                                                             a=rtpmap:8 PCMA/8000
+                                                                             a=rtpmap:106 CN/32000
+                                                                             a=rtpmap:105 CN/16000
+                                                                             a=rtpmap:13 CN/8000
+                                                                             a=rtpmap:127 red/8000
+                                                                             a=rtpmap:126 telephone-event/8000
+                                                                             a=maxptime:60
+                                                                             a=ssrc:230521117 cname:kf4xmmRJ009aEzji
+                                                                             a=ssrc:230521117 msid:ARDAMS ARDAMSa0
+                                                                             a=ssrc:230521117 mslabel:ARDAMS
+                                                                             a=ssrc:230521117 label:ARDAMSa0
+                                                                             m=video 9 RTP/SAVPF 100 116 117 96
+                                                                             c=IN IP4 0.0.0.0
+                                                                             a=rtcp:9 IN IP4 0.0.0.0
+                                                                             a=ice-ufrag:RwAGZvqZzO+pk2Lr
+                                                                             a=ice-pwd:MG5gTDUD4YSLclfoyq4YplZU
+                                                                             a=fingerprint:sha-1 D2:98:A1:F3:7E:3A:A7:4D:16:8E:26:A7:48:E7:7C:D7:EE:ED:12:49
+                                                                             a=setup:actpass
+                                                                             a=mid:video
+                                                                             a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
+                                                                             a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+                                                                             a=sendrecv
+                                                                             a=rtcp-mux
+                                                                             a=rtpmap:100 VP8/90000
+                                                                             a=rtcp-fb:100 ccm fir
+                                                                             a=rtcp-fb:100 nack
+                                                                             a=rtcp-fb:100 nack pli
+                                                                             a=rtcp-fb:100 goog-remb
+                                                                             a=rtpmap:116 red/90000
+                                                                             a=rtpmap:117 ulpfec/90000
+                                                                             a=rtpmap:96 rtx/90000
+                                                                             a=fmtp:96 apt=100
+                                                                             a=ssrc-group:FID 2351509040 3556311957
+                                                                             a=ssrc:2351509040 cname:kf4xmmRJ009aEzji
+                                                                             a=ssrc:2351509040 msid:ARDAMS ARDAMSv0
+                                                                             a=ssrc:2351509040 mslabel:ARDAMS
+                                                                             a=ssrc:2351509040 label:ARDAMSv0
+                                                                             a=ssrc:3556311957 cname:kf4xmmRJ009aEzji
+                                                                             a=ssrc:3556311957 msid:ARDAMS ARDAMSv0
+                                                                             a=ssrc:3556311957 mslabel:ARDAMS
+                                                                             a=ssrc:3556311957 label:ARDAMSv0
+04-19 15:31:17.119 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: setLocalDescription
+04-19 15:31:17.154 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"answer","payload":{"type":"answer","sdp":"v=0\r\no=- 6934148802814254873 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE audio video\r\na=msid-semantic: WMS\r\nm=audio 9 RTP\/SAVPF 111 103 9 0 8 106 105 13 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:Bml\/YP8lSFHiiYuB\r\na=ice-pwd:GJDzKrq0Dd2r21QRni12Pr3s\r\na=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75\r\na=setup:active\r\na=mid:audio\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=recvonly\r\na=rtcp-mux\r\na=rtpmap:111 opus\/48000\/2\r\na=fmtp:111 minptime=10; useinbandfec=1\r\na=rtpmap:103 ISAC\/16000\r\na=rtpmap:9 G722\/8000\r\na=rtpmap:0 PCMU\/8000\r\na=rtpmap:8 PCMA\/8000\r\na=rtpmap:106 CN\/32000\r\na=rtpmap:105 CN\/16000\r\na=rtpmap:13 CN\/8000\r\na=rtpmap:126 telephone-event\/8000\r\na=maxptime:60\r\nm=video 9 RTP\/SAVPF 100 116 117 96\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:Bml\/YP8lSFHiiYuB\r\na=ice-pwd:GJDzKrq0Dd2r21QRni12Pr3s\r\na=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75\r\na=setup:active\r\na=mid:video\r\na=extmap:2 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:3 http:\/\/www.webrtc.org\/experiments\/rtp-hdrext\/abs-send-time\r\na=recvonly\r\na=rtcp-mux\r\na=rtpmap:100 VP8\/90000\r\na=rtcp-fb:100 ccm fir\r\na=rtcp-fb:100 nack\r\na=rtcp-fb:100 nack pli\r\na=rtcp-fb:100 goog-remb\r\na=rtpmap:116 red\/90000\r\na=rtpmap:117 ulpfec\/90000\r\na=rtpmap:96 rtx\/90000\r\na=fmtp:96 apt=100\r\n"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.155 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->SetRemoteSDPCommand-->answer-->v=0
+                                                                             o=- 6934148802814254873 2 IN IP4 127.0.0.1
+                                                                             s=-
+                                                                             t=0 0
+                                                                             a=group:BUNDLE audio video
+                                                                             a=msid-semantic: WMS
+                                                                             m=audio 9 RTP/SAVPF 111 103 9 0 8 106 105 13 126
+                                                                             c=IN IP4 0.0.0.0
+                                                                             a=rtcp:9 IN IP4 0.0.0.0
+                                                                             a=ice-ufrag:Bml/YP8lSFHiiYuB
+                                                                             a=ice-pwd:GJDzKrq0Dd2r21QRni12Pr3s
+                                                                             a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
+                                                                             a=setup:active
+                                                                             a=mid:audio
+                                                                             a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+                                                                             a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+                                                                             a=recvonly
+                                                                             a=rtcp-mux
+                                                                             a=rtpmap:111 opus/48000/2
+                                                                             a=fmtp:111 minptime=10; useinbandfec=1
+                                                                             a=rtpmap:103 ISAC/16000
+                                                                             a=rtpmap:9 G722/8000
+                                                                             a=rtpmap:0 PCMU/8000
+                                                                             a=rtpmap:8 PCMA/8000
+                                                                             a=rtpmap:106 CN/32000
+                                                                             a=rtpmap:105 CN/16000
+                                                                             a=rtpmap:13 CN/8000
+                                                                             a=rtpmap:126 telephone-event/8000
+                                                                             a=maxptime:60
+                                                                             m=video 9 RTP/SAVPF 100 116 117 96
+                                                                             c=IN IP4 0.0.0.0
+                                                                             a=rtcp:9 IN IP4 0.0.0.0
+                                                                             a=ice-ufrag:Bml/YP8lSFHiiYuB
+                                                                             a=ice-pwd:GJDzKrq0Dd2r21QRni12Pr3s
+                                                                             a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
+                                                                             a=setup:active
+                                                                             a=mid:video
+                                                                             a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
+                                                                             a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+                                                                             a=recvonly
+                                                                             a=rtcp-mux
+                                                                             a=rtpmap:100 VP8/90000
+                                                                             a=rtcp-fb:100 ccm fir
+                                                                             a=rtcp-fb:100 nack
+                                                                             a=rtcp-fb:100 nack pli
+                                                                             a=rtcp-fb:100 goog-remb
+                                                                             a=rtpmap:116 red/90000
+                                                                             a=rtpmap:117 ulpfec/90000
+                                                                             a=rtpmap:96 rtx/90000
+                                                                             a=fmtp:96 apt=100
+04-19 15:31:17.156 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: setRemoteDescription-->v=0
+                                                                             o=- 6934148802814254873 2 IN IP4 127.0.0.1
+                                                                             s=-
+                                                                             t=0 0
+                                                                             a=group:BUNDLE audio video
+                                                                             a=msid-semantic: WMS
+                                                                             m=audio 9 RTP/SAVPF 111 103 9 0 8 106 105 13 126
+                                                                             c=IN IP4 0.0.0.0
+                                                                             a=rtcp:9 IN IP4 0.0.0.0
+                                                                             a=ice-ufrag:Bml/YP8lSFHiiYuB
+                                                                             a=ice-pwd:GJDzKrq0Dd2r21QRni12Pr3s
+                                                                             a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
+                                                                             a=setup:active
+                                                                             a=mid:audio
+                                                                             a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+                                                                             a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+                                                                             a=recvonly
+                                                                             a=rtcp-mux
+                                                                             a=rtpmap:111 opus/48000/2
+                                                                             a=fmtp:111 minptime=10; useinbandfec=1
+                                                                             a=rtpmap:103 ISAC/16000
+                                                                             a=rtpmap:9 G722/8000
+                                                                             a=rtpmap:0 PCMU/8000
+                                                                             a=rtpmap:8 PCMA/8000
+                                                                             a=rtpmap:106 CN/32000
+                                                                             a=rtpmap:105 CN/16000
+                                                                             a=rtpmap:13 CN/8000
+                                                                             a=rtpmap:126 telephone-event/8000
+                                                                             a=maxptime:60
+                                                                             m=video 9 RTP/SAVPF 100 116 117 96
+                                                                             c=IN IP4 0.0.0.0
+                                                                             a=rtcp:9 IN IP4 0.0.0.0
+                                                                             a=ice-ufrag:Bml/YP8lSFHiiYuB
+                                                                             a=ice-pwd:GJDzKrq0Dd2r21QRni12Pr3s
+                                                                             a=fingerprint:sha-256 51:68:B0:36:5C:E4:82:B6:B6:11:69:C0:01:94:29:ED:4A:6A:B4:D7:29:CD:C3:6E:BF:95:92:74:3C:2E:33:75
+                                                                             a=setup:active
+                                                                             a=mid:video
+                                                                             a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
+                                                                             a=extmap:3 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time
+                                                                             a=recvonly
+                                                                             a=rtcp-mux
+                                                                             a=rtpmap:100 VP8/90000
+                                                                             a=rtcp-fb:100 ccm fir
+                                                                             a=rtcp-fb:100 nack
+                                                                             a=rtcp-fb:100 nack pli
+                                                                             a=rtcp-fb:100 goog-remb
+                                                                             a=rtpmap:116 red/90000
+                                                                             a=rtpmap:117 ulpfec/90000
+                                                                             a=rtpmap:96 rtx/90000
+                                                                             a=fmtp:96 apt=100
+04-19 15:31:17.156 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: setRemoteDescription
+04-19 15:31:17.484 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong: onSetSuccess
+04-19 15:31:17.484 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong: onSetSuccess
+04-19 15:31:17.486 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"W6zw7e_9mVz0X8TxAAAA","type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:2551718687 1 udp 2122260223 192.168.0.127 42933 typ host generation 0"}}
+04-19 15:31:17.487 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"W6zw7e_9mVz0X8TxAAAA","type":"candidate","payload":{"label":1,"id":"video","candidate":"candidate:2551718687 1 udp 2122260223 192.168.0.127 42933 typ host generation 0"}}
+04-19 15:31:17.487 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:253794810 1 udp 2122255103 2001::9d38:953c:c5d:395a:3f57:ff8e 53865 typ host generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.489 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:253794810 1 udp 2122255103 2001::9d38:953c:c5d:395a:3f57:ff8e 53865 typ host generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.489 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.490 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.494 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:3442505084 1 udp 2122194687 192.168.163.1 53866 typ host generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.494 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:3442505084 1 udp 2122194687 192.168.163.1 53866 typ host generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.494 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.496 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.499 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:2954657374 1 udp 2122129151 192.168.239.1 53867 typ host generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.500 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:2954657374 1 udp 2122129151 192.168.239.1 53867 typ host generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.500 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.501 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.503 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:1356517016 1 udp 2122063615 192.168.0.113 53868 typ host generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.504 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:1356517016 1 udp 2122063615 192.168.0.113 53868 typ host generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.504 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.505 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.507 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:1101227274 1 tcp 1518275327 2001::9d38:953c:c5d:395a:3f57:ff8e 9 typ host tcptype active generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.507 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:1101227274 1 tcp 1518275327 2001::9d38:953c:c5d:395a:3f57:ff8e 9 typ host tcptype active generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.507 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.508 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.510 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:2209581452 1 tcp 1518214911 192.168.163.1 9 typ host tcptype active generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.510 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:2209581452 1 tcp 1518214911 192.168.163.1 9 typ host tcptype active generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.510 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.512 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.514 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:4271866542 1 tcp 1518149375 192.168.239.1 9 typ host tcptype active generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.514 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:4271866542 1 tcp 1518149375 192.168.239.1 9 typ host tcptype active generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.514 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.516 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.518 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: reponse:{"type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:509162088 1 tcp 1518083839 192.168.0.113 9 typ host tcptype active generation 0 ufrag Bml\/YP8lSFHiiYuB"},"from":"W6zw7e_9mVz0X8TxAAAA"}
+04-19 15:31:17.518 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong: cmd->AddIceCandidateCommand-->audio-->0-->candidate:509162088 1 tcp 1518083839 192.168.0.113 9 typ host tcptype active generation 0 ufrag Bml/YP8lSFHiiYuB
+04-19 15:31:17.518 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: getRemoteDescription
+04-19 15:31:17.519 3730-6910/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: addIceCandidate
+04-19 15:31:17.588 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"W6zw7e_9mVz0X8TxAAAA","type":"candidate","payload":{"label":0,"id":"audio","candidate":"candidate:3600539631 1 tcp 1518280447 192.168.0.127 40922 typ host tcptype passive generation 0"}}
+04-19 15:31:17.589 3730-6719/com.thinking.video.Abandoned.calltest I/yuyong_socket: emit-->event:message-->{"to":"W6zw7e_9mVz0X8TxAAAA","type":"candidate","payload":{"label":1,"id":"video","candidate":"candidate:3600539631 1 tcp 1518280447 192.168.0.127 40922 typ host tcptype passive generation 0"}}
+04-19 15:31:27.667 3730-3730/com.thinking.video.Abandoned.calltest I/yuyong_PeerConnection: dispose

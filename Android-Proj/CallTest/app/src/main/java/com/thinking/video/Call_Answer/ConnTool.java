@@ -17,10 +17,9 @@ import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
 import org.webrtc.PeerConnection;
 import org.webrtc.PeerConnectionFactory;
-import org.webrtc.SdpObserver;
-import org.webrtc.SessionDescription;
 import org.webrtc.VideoCapturer;
 import org.webrtc.VideoCapturerAndroid;
+import org.webrtc.VideoRenderer;
 import org.webrtc.VideoRendererGui;
 
 import java.io.BufferedReader;
@@ -48,11 +47,29 @@ public class ConnTool {
     private static final String VIDEO_CODEC_VP9 = "VP9";
     private static final String AUDIO_CODEC_OPUS = "opus";
 
+    private static final int LOCAL_X_CONNECTING = 0;
+    private static final int LOCAL_Y_CONNECTING = 0;
+    private static final int LOCAL_WIDTH_CONNECTING = 100;
+    private static final int LOCAL_HEIGHT_CONNECTING = 100;
+    private static final VideoRendererGui.ScalingType scalingType = VideoRendererGui.ScalingType.SCALE_ASPECT_FILL;
+
+    private static final int REMOTE_X = 0;
+    private static final int REMOTE_Y = 0;
+    private static final int REMOTE_WIDTH = 100;
+    private static final int REMOTE_HEIGHT = 100;
+
+    private static final int LOCAL_X_CONNECTED = 72;
+    private static final int LOCAL_Y_CONNECTED = 72;
+    private static final int LOCAL_WIDTH_CONNECTED = 25;
+    private static final int LOCAL_HEIGHT_CONNECTED = 25;
+
     private PeerConnectionFactory factory;
     private LinkedList<PeerConnection.IceServer> iceServers = new LinkedList<>();
     protected MediaConstraints pcConstraints = new MediaConstraints();
     protected PeerConnection mCallCoon;
     private MediaStream localMS;
+    private VideoRenderer.Callbacks localRender;
+    private VideoRenderer.Callbacks remoteRender;
 
     protected Class mClass;
     private String method;
@@ -121,7 +138,7 @@ public class ConnTool {
         Message msg = new Message();
         msg.what = 1001;
         for (int i = 0; i < infos.length; i++) {
-            if (infos[i].equals("")||infos[i].equals("\n"))
+            if (infos[i].equals("") || infos[i].equals("\n"))
                 continue;
             Log.i("yuyong", "serParams-->" + infos[i]);
             try {
@@ -176,6 +193,12 @@ public class ConnTool {
         localMS.addTrack(factory.createAudioTrack("ARDAMSa0", audioSource));
         //将本地媒体数据流添加到连接对象
         mCallCoon.addStream(localMS);
+        //输出
+        if (localRender == null) {
+            localRender = VideoRendererGui.create(LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType, true);
+        }
+        localMS.videoTracks.get(0).addRenderer(new VideoRenderer(localRender));
+        VideoRendererGui.update(localRender, LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType);
 
         Message msg = new Message();
         msg.obj = new Result("init", "", true);
@@ -187,6 +210,19 @@ public class ConnTool {
         @Override
         public void onAddStream(MediaStream mediaStream) {
             Log.i("yuyong", "onAddStream-->" + mediaStream.label());
+            if (remoteRender == null) {
+                remoteRender = VideoRendererGui.create(
+                        REMOTE_X, REMOTE_Y,
+                        REMOTE_WIDTH, REMOTE_HEIGHT, scalingType, false);
+            }
+            mediaStream.videoTracks.get(0).addRenderer(new VideoRenderer(remoteRender));
+            VideoRendererGui.update(remoteRender,
+                    REMOTE_X, REMOTE_Y,
+                    REMOTE_WIDTH, REMOTE_HEIGHT, scalingType);
+            VideoRendererGui.update(localRender,
+                    LOCAL_X_CONNECTED, LOCAL_Y_CONNECTED,
+                    LOCAL_WIDTH_CONNECTED, LOCAL_HEIGHT_CONNECTED,
+                    scalingType);
         }
 
         @Override
