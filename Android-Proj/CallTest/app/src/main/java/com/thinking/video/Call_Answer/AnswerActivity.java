@@ -45,7 +45,7 @@ public class AnswerActivity extends Activity implements ConnTool.onResutListener
         edt_address = (EditText) findViewById(R.id.edt_address);
         glsv_main = (GLSurfaceView) findViewById(R.id.glsv_main);
         //GLSurfaceView创建之后必须立即指定Renderer（即setRenderer）
-        //否则报错：Attempt to invoke virtual method 'void android.opengl.GLSurfaceView$GLThread.surfaceCreated()' on a null object reference、
+        //否则报错：Attempt to invoke virtual method 'void android.opengl.GLSurfaceView$GLThread.surfaceCreated()' on a null object reference
         glsv_main.setPreserveEGLContextOnPause(true);
         glsv_main.setKeepScreenOn(true);
         VideoRendererGui.setView(glsv_main, onGLViewReady);

@@ -1,4 +1,4 @@
-set device1=X560Y1ZR58110043
+set device1=84B7N16708000561
 set device2=0123456789ABCDEF
 echo %device1% %device2%
 
