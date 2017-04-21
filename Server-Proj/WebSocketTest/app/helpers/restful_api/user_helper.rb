@@ -1,0 +1,2 @@
+module RestfulApi::UserHelper
+end
