@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,20 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.thinking.video.webrtc.CallActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="CallActivity"
-            android:screenOrientation="fullUser">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name="com.thinking.video.Call_Answer.CallActivity"
             android:configChanges="orientation|screenSize"
-            android:label="Call_Answer_CallActivity"
+            android:label="CA_CallActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +33,7 @@
         <activity
             android:name="com.thinking.video.Call_Answer.AnswerActivity"
             android:configChanges="orientation|screenSize"
-            android:label="Call_Answer_AnswerActivity"
+            android:label="CA_AnswerActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

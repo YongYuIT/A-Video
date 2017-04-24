@@ -1,5 +1,5 @@
-set device1=84B7N16708000561
-set device2=0123456789ABCDEF
+set device1=X560Y1ZR58110043
+set device2=84B7N16708000561
 echo %device1% %device2%
 
 adb -s %device1% shell 'rm -f /sdcard/web_rtc_remote.config'

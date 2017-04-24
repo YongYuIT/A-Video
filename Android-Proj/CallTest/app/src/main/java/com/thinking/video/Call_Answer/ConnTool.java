@@ -1,13 +1,12 @@
 package com.thinking.video.Call_Answer;
 
 import android.graphics.Point;
+import android.hardware.Camera;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.WindowManager;
-
-import com.thinking.video.webrtc.PeerConnectionParameters;
 
 import org.json.JSONObject;
 import org.webrtc.AudioSource;
@@ -17,6 +16,7 @@ import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
 import org.webrtc.PeerConnection;
 import org.webrtc.PeerConnectionFactory;
+import org.webrtc.RendererCommon;
 import org.webrtc.VideoCapturer;
 import org.webrtc.VideoCapturerAndroid;
 import org.webrtc.VideoRenderer;
@@ -51,7 +51,7 @@ public class ConnTool {
     private static final int LOCAL_Y_CONNECTING = 0;
     private static final int LOCAL_WIDTH_CONNECTING = 100;
     private static final int LOCAL_HEIGHT_CONNECTING = 100;
-    private static final VideoRendererGui.ScalingType scalingType = VideoRendererGui.ScalingType.SCALE_ASPECT_FILL;
+    private static final RendererCommon.ScalingType scalingType = RendererCommon.ScalingType.SCALE_ASPECT_FILL;
 
     private static final int REMOTE_X = 0;
     private static final int REMOTE_Y = 0;
@@ -169,7 +169,7 @@ public class ConnTool {
         //初始化连接参数
         PeerConnectionParameters params = new PeerConnectionParameters(true, false, displaySize.x, displaySize.y, 30, 1, VIDEO_CODEC_VP9, true, 1, AUDIO_CODEC_OPUS, true);
         //初始化连接框架
-        PeerConnectionFactory.initializeAndroidGlobals(_params[1], true, true, params.videoCodecHwAcceleration, VideoRendererGui.getEGLContext());
+        PeerConnectionFactory.initializeAndroidGlobals(_params[1], true, true, params.videoCodecHwAcceleration);
         factory = new PeerConnectionFactory();
         //设置穿透服务器（STUN服务器）
         //iceServers.add(new PeerConnection.IceServer("stun:23.21.150.121"));
@@ -203,7 +203,7 @@ public class ConnTool {
         }
         Log.i("yuyong_out_put", "localRender addRenderer");
         localMS.videoTracks.get(0).addRenderer(new VideoRenderer(localRender));
-        VideoRendererGui.update(localRender, LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType);
+        VideoRendererGui.update(localRender, LOCAL_X_CONNECTING, LOCAL_Y_CONNECTING, LOCAL_WIDTH_CONNECTING, LOCAL_HEIGHT_CONNECTING, scalingType, true);
 
         Message msg = new Message();
         msg.obj = new Result("init", "", true);
@@ -213,12 +213,17 @@ public class ConnTool {
 
     private PeerConnection.Observer mPCObserver = new PeerConnection.Observer() {
         @Override
+        public void onIceConnectionReceivingChange(boolean b) {
+
+        }
+
+        @Override
         public void onAddStream(MediaStream mediaStream) {
             Log.i("yuyong", "onAddStream-->" + mediaStream.label());
             Log.i("yuyong_out_put", "remoteRender addRenderer");
             mediaStream.videoTracks.get(0).addRenderer(new VideoRenderer(remoteRender));
-            VideoRendererGui.update(remoteRender, REMOTE_X, REMOTE_Y, REMOTE_WIDTH, REMOTE_HEIGHT, scalingType);
-            VideoRendererGui.update(localRender, LOCAL_X_CONNECTED, LOCAL_Y_CONNECTED, LOCAL_WIDTH_CONNECTED, LOCAL_HEIGHT_CONNECTED, scalingType);
+            VideoRendererGui.update(remoteRender, REMOTE_X, REMOTE_Y, REMOTE_WIDTH, REMOTE_HEIGHT, scalingType, false);
+            VideoRendererGui.update(localRender, LOCAL_X_CONNECTED, LOCAL_Y_CONNECTED, LOCAL_WIDTH_CONNECTED, LOCAL_HEIGHT_CONNECTED, scalingType, true);
         }
 
         @Override
@@ -270,12 +275,31 @@ public class ConnTool {
     };
 
     private static VideoCapturer getVideoCapturer() {
-        String frontCameraDeviceName = VideoCapturerAndroid.getNameOfFrontFacingDevice();
+        String frontCameraDeviceName = getNameOfFrontFacingDevice();
         return VideoCapturerAndroid.create(frontCameraDeviceName);
     }
 
+    public static String getNameOfFrontFacingDevice() {
+        for (int i = 0; i < Camera.getNumberOfCameras(); ++i) {
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(i, info);
+            if (info.facing == 1) {
+                return getDeviceName(i);
+            }
+        }
+
+        return null;
+    }
+
+    public static String getDeviceName(int index) {
+        Camera.CameraInfo info = new Camera.CameraInfo();
+        Camera.getCameraInfo(index, info);
+        String facing = info.facing == 1 ? "front" : "back";
+        return "Camera " + index + ", Facing " + facing + ", Orientation " + info.orientation;
+    }
+
     private static void deleteCache() {
-        File[] files = new File[]{new File(config_remote_file), new File(config_local_params_file), new File(config_local_file)};
+        File[] files = new File[]{new File(config_remote_file), new File(config_remote_params_file), new File(config_local_params_file), new File(config_local_file)};
         for (int i = 0; i < files.length; i++) {
             if (files[i].exists()) {
                 String file_tmp_name = files[i].getAbsolutePath() + ".tmp";
