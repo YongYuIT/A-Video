@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile 'com.github.nkzawa:socket.io-client:0.4.2'
+    //http://mvnrepository.com/artifact/io.pristine/libjingle
     compile 'io.pristine:libjingle:11139@aar'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
