@@ -7,7 +7,7 @@
 
 (function() {
   this.App || (this.App = {});
-
+  alert("action acble client ready");
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
