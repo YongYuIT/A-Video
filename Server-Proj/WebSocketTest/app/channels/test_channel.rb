@@ -12,6 +12,7 @@ class TestChannel < ApplicationCable::Channel
   end
 
   def do_test(msg_from_client)
+    $redises.srem('socket_client','')
     $redises.smembers('socket_client').each{
       |item|
       if item!=@currentUserId
