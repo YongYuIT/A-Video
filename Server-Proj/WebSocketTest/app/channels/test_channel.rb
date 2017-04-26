@@ -16,7 +16,8 @@ class TestChannel < ApplicationCable::Channel
     $redises.smembers('socket_client').each{
       |item|
       if item!=@currentUserId
-        TestChannel.broadcast_to(item,to_client_message: "this is a message from server (reponse to message from client \"#{msg_from_client['hello_msg_to_server']}\")")
+        msg_to_client=msg_from_client['hello_msg_to_server']
+        TestChannel.broadcast_to(item,to_client_message: msg_to_client )
       end
     }
   end
