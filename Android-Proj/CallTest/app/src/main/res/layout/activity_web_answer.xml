@@ -4,7 +4,7 @@
     android:id="@+id/activity_answer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.thinking.video.CallAnswer.AnswerActivity">
+    tools:context="com.thinking.video.WebSocket.WebAnswerActivity">
 
     <android.opengl.GLSurfaceView
         android:id="@+id/glsv_main"
@@ -39,34 +39,15 @@
                 android:text="初始化连接"
                 android:textColor="@android:color/widget_edittext_dark" />
 
+
             <Button
-                android:id="@+id/btn_receive_conn"
+                android:id="@+id/btn_coon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:onClick="onClick"
                 android:text="接受连接"
                 android:textColor="@android:color/widget_edittext_dark" />
-
-            <Button
-                android:id="@+id/btn_create_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:onClick="onClick"
-                android:text="创建回应"
-                android:textColor="@android:color/widget_edittext_dark" />
-
-            <Button
-                android:id="@+id/btn_set_params"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:onClick="onClick"
-                android:text="设置参数"
-                android:textColor="@android:color/widget_edittext_dark" />
         </LinearLayout>
-
-
     </LinearLayout>
 </RelativeLayout>

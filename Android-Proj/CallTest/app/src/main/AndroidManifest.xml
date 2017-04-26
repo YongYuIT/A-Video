@@ -19,10 +19,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name="com.thinking.video.Call_Answer.CallActivity"
+            android:name="com.thinking.video.CallAnswer.CallActivity"
             android:configChanges="orientation|screenSize"
-            android:label="CA_CallActivity"
+            android:label="CACallActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +32,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.thinking.video.Call_Answer.AnswerActivity"
+            android:name="com.thinking.video.CallAnswer.AnswerActivity"
             android:configChanges="orientation|screenSize"
-            android:label="CA_AnswerActivity"
+            android:label="CAAnswerActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebSocket.WebCallActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="WebCallActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebSocket.WebAnswerActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="WebAnswerActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

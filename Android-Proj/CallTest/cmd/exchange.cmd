@@ -2,6 +2,9 @@ set device1=X560Y1ZR58110043
 set device2=84B7N16708000561
 echo %device1% %device2%
 
+adb -s %device1% remount
+adb -s %device2% remount
+
 adb -s %device1% shell 'rm -f /sdcard/web_rtc_remote.config'
 adb -s %device2% shell 'rm -f /sdcard/web_rtc_remote.config'
 adb -s %device1% shell 'rm -f /sdcard/web_rtc_remote_params.config'
