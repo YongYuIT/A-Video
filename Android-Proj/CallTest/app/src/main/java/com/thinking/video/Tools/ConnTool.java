@@ -134,7 +134,7 @@ public class ConnTool {
         });
     }
 
-    public void serParams(Object... _params) {
+    public void setParams(Object... _params) {
         String info = readFileStr(new File(config_remote_params_file));
         if (params.length > 0)
             info = (String) params[0];
@@ -144,7 +144,7 @@ public class ConnTool {
         for (int i = 0; i < infos.length; i++) {
             if (infos[i].equals("") || infos[i].equals("\n"))
                 continue;
-            Log.i("yuyong", "serParams-->" + infos[i]);
+            Log.i("yuyong", "setParams-->" + infos[i]);
             try {
                 JSONObject params = new JSONObject(infos[i]);
                 IceCandidate candidate = new IceCandidate(
@@ -153,10 +153,10 @@ public class ConnTool {
                         params.getString("candidate")
                 );
                 mCallCoon.addIceCandidate(candidate);
-                msg.obj = new Result("answer-->serParams", "Success", true);
+                msg.obj = new Result("setParams", "Success", true);
             } catch (Exception e) {
                 e.printStackTrace();
-                msg.obj = new Result("answer-->serParams", "Fail", true);
+                msg.obj = new Result("setParams", "Fail", true);
                 break;
             }
         }

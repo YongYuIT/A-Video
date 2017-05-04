@@ -33,11 +33,8 @@ public class AnswerTool extends ConnTool {
             info = (String) params[0];
         Log.i("yuyong", "readFileStr-->" + info);
         SessionDescription sdp = new SessionDescription(SessionDescription.Type.fromCanonicalForm("offer"), info);
+        Log.i("yuyong", "try_setRemoteDescription");
         mCallCoon.setRemoteDescription(mSdpObserver, sdp);
-        Message msg = new Message();
-        msg.obj = new Result("setRemote", "Success", true);
-        msg.what = 1001;
-        mHandler.sendMessage(msg);
     }
 
 
@@ -65,11 +62,19 @@ public class AnswerTool extends ConnTool {
         @Override
         public void onSetSuccess() {
             Log.i("yuyong", "Answer-->mSdpObserver-->onSetSuccess");
+            Message msg = new Message();
+            msg.obj = new Result("setRemote", "Success", true);
+            msg.what = 1001;
+            mHandler.sendMessage(msg);
         }
 
         @Override
         public void onSetFailure(String s) {
             Log.i("yuyong", "Answer-->mSdpObserver-->onSetFailure-->" + s);
+            Message msg = new Message();
+            msg.obj = new Result("setRemote", "Fail", false);
+            msg.what = 1001;
+            mHandler.sendMessage(msg);
         }
     };
 }

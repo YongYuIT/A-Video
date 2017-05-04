@@ -6,6 +6,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -41,18 +42,25 @@ public class WebAnswerActivity extends Activity implements ConnTool.onResutListe
         inutUI();
         mSocketTool = SocketTool.getThiz(this);
         mSocketTool.setListener(msListener);
-        mSocketTool.doConn("http://192.168.0.118:3333/test/test_page");
+        mSocketTool.doConn("http://192.168.0.114:3333/test/test_page");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSocketTool.doDisConn();
     }
 
     private SocketTool.Listener msListener = new SocketTool.Listener() {
         @Override
         public void onMessage(String msg) {
-            Log.i("yuyong", "onMessage-->" + msg);
+            Log.i("yuyong", "socket_onMessage-->" + msg);
             JSONObject j_msg = null;
             try {
                 j_msg = new JSONObject(msg);
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.i("yuyong", "onMessage-->" + e.getMessage());
             }
             if (j_msg == null)
                 return;
@@ -87,7 +95,7 @@ public class WebAnswerActivity extends Activity implements ConnTool.onResutListe
     private void onParams(JSONObject json) {
         String msg = null;
         try {
-            msg = json.get("msg").toString();
+            msg = new String(Base64.decode(json.get("msg").toString(), Base64.DEFAULT));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -153,6 +161,7 @@ public class WebAnswerActivity extends Activity implements ConnTool.onResutListe
             mConnTask.start("answer");
         }
         if (result.methodName.equals("answer") && result.result) {
+            Log.i("yuyong", "onFinished--answer-->" + result.disc);
             try {
                 JSONObject msg = new JSONObject();
                 msg.put("title", "answer");
@@ -160,21 +169,21 @@ public class WebAnswerActivity extends Activity implements ConnTool.onResutListe
                 mSocketTool.sendMsg(msg.toString().replace("{", "\\{").replace("}", "\\}").replace("\"", "\\\""));
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.i("yuyong", "answer-->error:" + e.getMessage());
             }
         }
         if (result.methodName.equals("onIceGatheringChange") && result.result) {
             try {
                 JSONObject msg = new JSONObject();
                 msg.put("title", "params");
-                msg.put("msg", "$$");
-                String s_msg = msg.toString().replace("$$", result.disc);
-                mSocketTool.sendMsg(s_msg.replace("{", "\\{").replace("}", "\\}").replace("\"", "\\\""));
+                msg.put("msg", Base64.encodeToString(result.disc.getBytes(), Base64.DEFAULT));
+                mSocketTool.sendMsg(msg.toString().replace("{", "\\{").replace("}", "\\}").replace("\"", "\\\""));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         if (result.methodName.equals("onParams") && result.result) {
-            mConnTask.start("serParams", result.disc);
+            mConnTask.start("setParams", result.disc);
         }
     }
 }

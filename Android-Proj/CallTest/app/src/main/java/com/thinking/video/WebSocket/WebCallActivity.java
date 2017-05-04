@@ -6,6 +6,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -39,7 +40,13 @@ public class WebCallActivity extends Activity implements ConnTool.onResutListene
         inutUI();
         mSocketTool = SocketTool.getThiz(this);
         mSocketTool.setListener(msListener);
-        mSocketTool.doConn("http://192.168.0.118:3333/test/test_page");
+        mSocketTool.doConn("http://192.168.0.114:3333/test/test_page");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSocketTool.doDisConn();
     }
 
     private SocketTool.Listener msListener = new SocketTool.Listener() {
@@ -84,7 +91,7 @@ public class WebCallActivity extends Activity implements ConnTool.onResutListene
     private void onParams(JSONObject json) {
         String msg = null;
         try {
-            msg = json.get("msg").toString();
+            msg = new String(Base64.decode(json.get("msg").toString(), Base64.DEFAULT));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,11 +167,8 @@ public class WebCallActivity extends Activity implements ConnTool.onResutListene
             try {
                 JSONObject msg = new JSONObject();
                 msg.put("title", "params");
-                msg.put("msg", "$$**$$");
-                String s_msg = msg.toString().replace("{", "\\{").replace("}", "\\}").replace("\"", "\\\"");
-                result.disc.replace("{", "\\{").replace("}", "\\}").replace("\"", "\\\"");
-                s_msg.replace("$$**$$", result.disc);
-                mSocketTool.sendMsg(s_msg);
+                msg.put("msg", Base64.encodeToString(result.disc.getBytes(), Base64.DEFAULT));
+                mSocketTool.sendMsg(msg.toString().replace("{", "\\{").replace("}", "\\}").replace("\"", "\\\""));
             } catch (Exception e) {
                 e.printStackTrace();
             }
