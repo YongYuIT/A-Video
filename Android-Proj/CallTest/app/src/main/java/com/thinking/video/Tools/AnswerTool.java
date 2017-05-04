@@ -24,6 +24,7 @@ public class AnswerTool extends ConnTool {
     }
 
     public void answer(Object... params) {
+        Log.i("yuyong_rtc", "try createAnswer");
         mCallCoon.createAnswer(mSdpObserver, pcConstraints);
     }
 
@@ -33,7 +34,7 @@ public class AnswerTool extends ConnTool {
             info = (String) params[0];
         Log.i("yuyong", "readFileStr-->" + info);
         SessionDescription sdp = new SessionDescription(SessionDescription.Type.fromCanonicalForm("offer"), info);
-        Log.i("yuyong", "try_setRemoteDescription");
+        Log.i("yuyong_rtc", "try setRemoteDescription");
         mCallCoon.setRemoteDescription(mSdpObserver, sdp);
     }
 
@@ -41,7 +42,7 @@ public class AnswerTool extends ConnTool {
     private SdpObserver mSdpObserver = new SdpObserver() {
         @Override
         public void onCreateFailure(String s) {
-            Log.i("yuyong", "Answer-->mSdpObserver-->onCreateFailure-->" + s);
+            Log.i("yuyong_rtc", "try createAnswer fail" + s);
             Message msg = new Message();
             msg.obj = new Result("answer", s, false);
             msg.what = 1001;
@@ -50,8 +51,29 @@ public class AnswerTool extends ConnTool {
 
         @Override
         public void onCreateSuccess(SessionDescription sessionDescription) {
-            Log.i("yuyong", "Answer-->mSdpObserver-->onCreateSuccess-->\n" + sessionDescription.description);
-            mCallCoon.setLocalDescription(this, sessionDescription);
+            Log.i("yuyong_rtc", "try createAnswer success" + sessionDescription.description);
+            Log.i("yuyong_rtc", "try setLocalDescription" + sessionDescription.description);
+            mCallCoon.setLocalDescription(new SdpObserver() {
+                @Override
+                public void onCreateSuccess(SessionDescription sessionDescription) {
+
+                }
+
+                @Override
+                public void onSetSuccess() {
+                    Log.i("yuyong_rtc", "try setLocalDescription success");
+                }
+
+                @Override
+                public void onCreateFailure(String s) {
+
+                }
+
+                @Override
+                public void onSetFailure(String s) {
+                    Log.i("yuyong_rtc", "try setLocalDescription fail--" + s);
+                }
+            }, sessionDescription);
             Message msg = new Message();
             msg.obj = new Result("answer", sessionDescription.description, true);
             msg.what = 1001;
@@ -61,7 +83,7 @@ public class AnswerTool extends ConnTool {
 
         @Override
         public void onSetSuccess() {
-            Log.i("yuyong", "Answer-->mSdpObserver-->onSetSuccess");
+            Log.i("yuyong_rtc", "try setRemoteDescription success");
             Message msg = new Message();
             msg.obj = new Result("setRemote", "Success", true);
             msg.what = 1001;
@@ -70,7 +92,7 @@ public class AnswerTool extends ConnTool {
 
         @Override
         public void onSetFailure(String s) {
-            Log.i("yuyong", "Answer-->mSdpObserver-->onSetFailure-->" + s);
+            Log.i("yuyong_rtc", "try setRemoteDescription fail--" + s);
             Message msg = new Message();
             msg.obj = new Result("setRemote", "Fail", false);
             msg.what = 1001;

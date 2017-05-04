@@ -152,6 +152,7 @@ public class WebAnswerActivity extends Activity implements ConnTool.onResutListe
 
     @Override
     public void onFinished(ConnTool.Result result) {
+        Log.i("yuyong", "onFinished--" + result.methodName + "--" + result.result);
         if (result.methodName.equals("onCoonRequest") && result.result) {
             //缓存远端信令
             mRemoteDisc = result.disc;

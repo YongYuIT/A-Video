@@ -24,6 +24,7 @@ public class CallTool extends ConnTool {
     }
 
     public void createOffer(Object... params) {
+        Log.i("yuyong_rtc", "try createOffer");
         mCallCoon.createOffer(mSdpObserver, pcConstraints);
     }
 
@@ -33,6 +34,7 @@ public class CallTool extends ConnTool {
             info = (String) params[0];
         Log.i("yuyong", "readFileStr-->" + info);
         SessionDescription sdp = new SessionDescription(SessionDescription.Type.fromCanonicalForm("answer"), info);
+        Log.i("yuyong_rtc", "try setRemoteDescription");
         mCallCoon.setRemoteDescription(mSdpObserver, sdp);
         Message msg = new Message();
         msg.obj = new Result("setRemote", "Success", true);
@@ -44,7 +46,7 @@ public class CallTool extends ConnTool {
     private SdpObserver mSdpObserver = new SdpObserver() {
         @Override
         public void onCreateFailure(String s) {
-            Log.i("yuyong", "Call-->mSdpObserver-->onCreateFailure-->" + s);
+            Log.i("yuyong_rtc", "try createOffer fail--" + s);
             Message msg = new Message();
             msg.obj = new Result("createOffer", s, false);
             msg.what = 1001;
@@ -53,7 +55,8 @@ public class CallTool extends ConnTool {
 
         @Override
         public void onCreateSuccess(SessionDescription sessionDescription) {
-            Log.i("yuyong", "Call-->mSdpObserver-->onCreateSuccess-->\n" + sessionDescription.description);
+            Log.i("yuyong_rtc", "try createOffer success--" + sessionDescription.description);
+            Log.i("yuyong_rtc", "try setLocalDescription");
             mCallCoon.setLocalDescription(this, sessionDescription);
             writeFileTxt(new File(config_local_file), sessionDescription.description);
             Message msg = new Message();
@@ -64,12 +67,12 @@ public class CallTool extends ConnTool {
 
         @Override
         public void onSetSuccess() {
-            Log.i("yuyong", "Call-->mSdpObserver-->onSetSuccess");
+            Log.i("yuyong_rtc", "try Description success");
         }
 
         @Override
         public void onSetFailure(String s) {
-            Log.i("yuyong", "Call-->mSdpObserver-->onSetFailure-->" + s);
+            Log.i("yuyong_rtc", "try Description fail");
         }
     };
 }

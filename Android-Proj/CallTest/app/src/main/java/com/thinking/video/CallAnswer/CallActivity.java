@@ -90,7 +90,7 @@ public class CallActivity extends Activity implements ConnTool.onResutListener {
             mConnTask.start("setRemote");
         }
         if (v.getId() == R.id.btn_set_params) {
-            mConnTask.start("serParams");
+            mConnTask.start("setParams");
         }
     }
 

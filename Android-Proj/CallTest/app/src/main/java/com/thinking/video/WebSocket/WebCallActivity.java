@@ -95,6 +95,7 @@ public class WebCallActivity extends Activity implements ConnTool.onResutListene
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Log.i("yuyong", "onParams-->" + msg);
         onFinished(new ConnTool.Result("onParams", msg, true));
     }
 
@@ -145,7 +146,7 @@ public class WebCallActivity extends Activity implements ConnTool.onResutListene
 
     @Override
     public void onFinished(ConnTool.Result result) {
-        Log.i("yuyong", result.methodName + "-->" + result.disc);
+        Log.i("yuyong", "onFinished--" + result.methodName + "--" + result.result);
         if (result.methodName.equals("init") && result.result) {
             btn_create_conn.setClickable(true);
             btn_create_conn.setTextColor(Color.WHITE);
@@ -174,7 +175,7 @@ public class WebCallActivity extends Activity implements ConnTool.onResutListene
             }
         }
         if (result.methodName.equals("onParams") && result.result) {
-            mConnTask.start("serParams", result.disc);
+            mConnTask.start("setParams", result.disc);
         }
     }
 }

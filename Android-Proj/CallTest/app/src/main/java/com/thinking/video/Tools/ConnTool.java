@@ -138,6 +138,7 @@ public class ConnTool {
         String info = readFileStr(new File(config_remote_params_file));
         if (params.length > 0)
             info = (String) params[0];
+        Log.i("yuyong", "setParams start-->" + info);
         String infos[] = info.split("########");
         Message msg = new Message();
         msg.what = 1001;
