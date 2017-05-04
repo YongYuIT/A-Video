@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'test/test_page'
+  root 'test#test_page'
 
   namespace :restful_api do
     post 'user/login'
