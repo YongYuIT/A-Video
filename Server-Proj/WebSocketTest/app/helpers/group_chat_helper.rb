@@ -1,0 +1,2 @@
+module GroupChatHelper
+end
