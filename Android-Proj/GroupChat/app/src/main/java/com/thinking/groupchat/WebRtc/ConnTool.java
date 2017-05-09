@@ -43,7 +43,6 @@ public class ConnTool {
         public String methodName;
         public boolean result;
         public String disc;
-        public Object info;
 
         public Result(String m, String d, boolean r) {
             methodName = m;
@@ -112,8 +111,11 @@ public class ConnTool {
         WebRtcConn.pcConstraints.mandatory.add(new MediaConstraints.KeyValuePair("OfferToReceiveVideo", "true"));
         WebRtcConn.pcConstraints.optional.add(new MediaConstraints.KeyValuePair("DtlsSrtpKeyAgreement", "true"));
         //初始化连接对象
-        for (int i = 0; i < mCurrentCoonNum; i++)
-            mConns.add(new WebRtcConn(WebRtcConn.factory, WebRtcConn.pcConstraints, WebRtcConn.iceServers));
+        if (mCurrentCoonNum == 2) {
+            //如果是两路连接，即三方视频
+            mConns.add(new WebRtcCallConn(WebRtcConn.factory, WebRtcConn.pcConstraints, WebRtcConn.iceServers));
+            mConns.add(new WebRtcAnswerConn(WebRtcConn.factory, WebRtcConn.pcConstraints, WebRtcConn.iceServers));
+        }
         //创建本地媒体数据流
         WebRtcConn.localMS = WebRtcConn.factory.createLocalMediaStream("ARDAMS");
         //初始化媒体数据流
@@ -147,7 +149,9 @@ public class ConnTool {
         if (mConns.size() == 2) {
             //假设两路连接，三方视频
             mConns.get(0).mPosition = new int[]{0, 50, 50, 50};
-            mConns.get(0).setPosition();
+            mConns.get(0).setRemotePosition();
+            mConns.get(1).mPosition = new int[]{50, 0, 50, 50};
+            mConns.get(1).setRemotePosition();
         }
     }
 

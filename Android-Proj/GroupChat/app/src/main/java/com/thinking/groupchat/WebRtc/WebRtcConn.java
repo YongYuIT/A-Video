@@ -39,6 +39,9 @@ public class WebRtcConn {
 
     public static Handler mHandler;
 
+    protected String type;
+    protected String setState = "";
+    protected SdpObserver mSdpObserver;
 
     public PeerConnection mConn;
     public VideoRenderer.Callbacks mRemoteRender;
@@ -49,13 +52,36 @@ public class WebRtcConn {
         mConn = fac.createPeerConnection(ice, mc, mListener);
     }
 
-    public void createOffer() {
-        mConn.createOffer(mSdpObserver, pcConstraints);
-    }
 
-    public void setPosition() {
+    public void setRemotePosition() {
         if (mRemoteRender == null)
             mRemoteRender = VideoRendererGui.create(mPosition[0], mPosition[1], mPosition[2], mPosition[3], scalingType, false);
+    }
+
+    public void setRemoteDescription(SessionDescription sdp) {
+        setState = "setRemoteDescription";
+        mConn.setRemoteDescription(mSdpObserver, sdp);
+    }
+
+    public void setParams(JSONArray jsonArray) {
+        Message msg = new Message();
+        msg.what = 1001;
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                IceCandidate candidate = new IceCandidate(
+                        jsonArray.getJSONObject(i).getString("id"),
+                        jsonArray.getJSONObject(i).getInt("label"),
+                        jsonArray.getJSONObject(i).getString("candidate"));
+                mConn.addIceCandidate(candidate);
+            } catch (Exception e) {
+                msg.obj = new ConnTool.Result(type + "setParams", "Fail", false);
+                mHandler.sendMessage(msg);
+                return;
+            }
+        }
+        msg.obj = new ConnTool.Result(type + "setParams", "Success", true);
+        mHandler.sendMessage(msg);
+        return;
     }
 
     private PeerConnection.Observer mListener = new PeerConnection.Observer() {
@@ -79,8 +105,8 @@ public class WebRtcConn {
             Log.i("yuyong", "onIceGatheringChange--" + iceGatheringState.name());
             if (iceGatheringState == PeerConnection.IceGatheringState.COMPLETE && mParams != null) {
                 Message msg = new Message();
-                msg.obj = new ConnTool.Result("onIceGatheringChange", mParams.toString(), true);
-                msg.what = this.hashCode();
+                msg.obj = new ConnTool.Result(type + "_onIceGatheringChange", mParams.toString(), true);
+                msg.what = 1001;
                 mHandler.sendMessage(msg);
             }
         }
@@ -127,34 +153,6 @@ public class WebRtcConn {
         @Override
         public void onRenegotiationNeeded() {
             Log.i("yuyong", "onRenegotiationNeeded");
-        }
-    };
-
-    private SdpObserver mSdpObserver = new SdpObserver() {
-        @Override
-        public void onCreateSuccess(SessionDescription sessionDescription) {
-            Log.i("yuyong", "onCreateSuccess--" + sessionDescription.description);
-            mConn.setLocalDescription(this, sessionDescription);
-            Message msg = new Message();
-            msg.obj = new ConnTool.Result("createOffer", sessionDescription.description, true);
-            ((ConnTool.Result) msg.obj).info = WebRtcConn.this;
-            msg.what = 1001;
-            mHandler.sendMessage(msg);
-        }
-
-        @Override
-        public void onSetSuccess() {
-            Log.i("yuyong", "onSetSuccess");
-        }
-
-        @Override
-        public void onCreateFailure(String s) {
-            Log.i("yuyong", "onCreateFailure" + s);
-        }
-
-        @Override
-        public void onSetFailure(String s) {
-            Log.i("yuyong", "onSetFailure" + s);
         }
     };
 }

@@ -88,8 +88,8 @@ public class SocketTool {
     }
 
 
-    public void sendMsg(String msg) {
-        final String send_msg = String.format("App.test.do_test(\"%s\")", msg);
+    public void sendMessage(String msg) {
+        final String send_msg = String.format("App.group_chat.send_message(\"%s\")", msg);
         mWeb.post(new Runnable() {
             @Override
             public void run() {
