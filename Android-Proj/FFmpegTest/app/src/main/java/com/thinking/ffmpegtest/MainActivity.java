@@ -3,6 +3,7 @@ package com.thinking.ffmpegtest;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
@@ -18,7 +19,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FFmpeg ffmpeg = FFmpeg.getInstance(this);
+        ffmpeg = FFmpeg.getInstance(this);
         try {
             ffmpeg.loadBinary(new LoadBinaryResponseHandler() {
 
@@ -71,6 +72,52 @@ public class MainActivity extends Activity {
             });
         } catch (FFmpegCommandAlreadyRunningException e) {
             Log.i("yuyong", "FFmpegCommandAlreadyRunningException-->" + e.getMessage());
+        }
+    }
+
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_test_push) {
+            try {
+                ffmpeg.execute(new String[]{
+                        "-re",
+                        "-i",
+                        "/sdcard/DCIM/Camera/VID_20170510_172245.3gp",
+                        "-vcodec",
+                        "libx264",
+                        "-acodec",
+                        "aac",
+                        "-f",
+                        "flv",
+                        "rtmp://localhost:1935/rtmplive/home"}, new ExecuteBinaryResponseHandler() {
+
+                    @Override
+                    public void onStart() {
+                        Log.i("yuyong", "onStart");
+                    }
+
+                    @Override
+                    public void onProgress(String message) {
+                        Log.i("yuyong", "onProgress-->" + message);
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        Log.i("yuyong", "onFailure-->" + message);
+                    }
+
+                    @Override
+                    public void onSuccess(String message) {
+                        Log.i("yuyong", "onSuccess-->" + message);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        Log.i("yuyong", "onFinish");
+                    }
+                });
+            } catch (FFmpegCommandAlreadyRunningException e) {
+                Log.i("yuyong", "FFmpegCommandAlreadyRunningException-->" + e.getMessage());
+            }
         }
     }
 }
