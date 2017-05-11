@@ -81,14 +81,16 @@ public class MainActivity extends Activity {
                 ffmpeg.execute(new String[]{
                         "-re",
                         "-i",
-                        "/sdcard/DCIM/Camera/VID_20170510_172245.3gp",
+                        "/sdcard/DCIM/Camera/test.avi",
                         "-vcodec",
                         "libx264",
                         "-acodec",
                         "aac",
                         "-f",
                         "flv",
-                        "rtmp://localhost:1935/rtmplive/home"}, new ExecuteBinaryResponseHandler() {
+                        "-strict",
+                        "-2",
+                        "rtmp://192.168.42.248:1935/myapp/test"}, new ExecuteBinaryResponseHandler() {
 
                     @Override
                     public void onStart() {
