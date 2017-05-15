@@ -76,6 +76,9 @@ public class MainActivity extends Activity {
     }
 
     public void onClick(View v) {
+        if (v.getId() == R.id.btn_test_lib) {
+            FFmpegTools.test();
+        }
         if (v.getId() == R.id.btn_test_push) {
             try {
                 ffmpeg.execute(new String[]{
