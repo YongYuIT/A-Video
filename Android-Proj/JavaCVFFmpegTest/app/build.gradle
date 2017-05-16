@@ -4,8 +4,8 @@ android {
     compileSdkVersion 24
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.thinking.ffmpegtest"
-        minSdkVersion 16
+        applicationId "com.thinking.javacvffmpegtest"
+        minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -17,19 +17,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
+    packagingOptions {
+        exclude 'org/bytedeco/javacpp/macosx-x86_64/libusb-1.0.dylib'
     }
 }
 
 dependencies {
+    compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.3.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.writingminds:FFmpegAndroid:0.3.2'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'

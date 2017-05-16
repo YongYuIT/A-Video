@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\WebRtc\20170515001\arm\include;E:\android-ndk-r10b\platforms\android-19\arch-arm\usr\include;E:\Program Files\Java\jdk1.7.0_79\include;$(IncludePath)</IncludePath>
+    <IncludePath>G:\WebRtc\FFmpeg-SDK\arm\include;E:\android-ndk-r10b\platforms\android-19\arch-arm\usr\include;E:\Program Files\Java\jdk1.7.0_79\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

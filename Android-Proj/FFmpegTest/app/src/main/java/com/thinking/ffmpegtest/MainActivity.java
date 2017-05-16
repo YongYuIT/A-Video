@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
                         "flv",
                         "-strict",
                         "-2",
-                        "rtmp://192.168.42.248:1935/myapp/test"}, new ExecuteBinaryResponseHandler() {
+                        "rtmp://192.168.0.119:1935/myapp/test"}, new ExecuteBinaryResponseHandler() {
 
                     @Override
                     public void onStart() {
