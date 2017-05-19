@@ -17,6 +17,8 @@ public class FFmpegTools {
     }
 
     public static native void test();
+
+    public static native void getStreamFromFile(String file_path, String rtmp);
 }
-//javah -d G:\WebRtc\20170515001\A-Video\Android-Proj\FFmpegTest\app\jni -classpath G:\WebRtc\20170515001\A-Video\Android-Proj\FFmpegTest\app\build\intermediates\classes\debug com.thinking.ffmpegtest.FFmpegTools
+//javah -d G:\WebRtc\20170517001\A-Video\Android-Proj\FFmpegTest\app\jni -classpath G:\WebRtc\20170517001\A-Video\Android-Proj\FFmpegTest\app\build\intermediates\classes\debug com.thinking.ffmpegtest.FFmpegTools
 

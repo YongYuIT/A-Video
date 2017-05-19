@@ -37,7 +37,8 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE    := com_thinking_ffmpegtest
-LOCAL_SRC_FILES := test.cpp
+LOCAL_SRC_FILES := test.cpp \
+    get_stream_file.cpp
 LOCAL_C_INCLUDES += G:\WebRtc\FFmpeg-SDK\arm\include
 LOCAL_LDLIBS +=  -llog -ldl -lz
 LOCAL_SHARED_LIBRARIES := avcodec avdevice avfilter avformat avutil swresample swscale

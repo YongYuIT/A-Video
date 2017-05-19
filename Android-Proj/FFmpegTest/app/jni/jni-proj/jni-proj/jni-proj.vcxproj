@@ -69,6 +69,7 @@
     <ClInclude Include="..\..\com_thinking_ffmpegtest_FFmpegTools.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\get_stream_file.cpp" />
     <ClCompile Include="..\..\test.cpp" />
   </ItemGroup>
   <ItemGroup>
