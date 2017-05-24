@@ -17,7 +17,8 @@ extern "C" {
 
 	//由于ffmpeg是纯C写的，所以所有的include必须包含在extern "C"内
 #include<libavcodec\avcodec.h>
-#include <libavformat\avformat.h>
+#include<libavformat\avformat.h>
+#include<libavutil\time.h>
 	/*
 	 * Class:     com_thinking_ffmpegtest_FFmpegTools
 	 * Method:    test
