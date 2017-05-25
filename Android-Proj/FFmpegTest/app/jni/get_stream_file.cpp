@@ -1,6 +1,8 @@
 #include"com_thinking_ffmpegtest_FFmpegTools.h"
 #include"tools.h"
 
+//http://blog.csdn.net/leixiaohua1020/article/details/39803457
+//http://blog.csdn.net/u011485531/article/details/56013148
 
 JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFile
 (JNIEnv * env, jclass j_class, jstring file_path, jstring rtmp_add){

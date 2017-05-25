@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_test_push) {
+        if (v.getId() == R.id.btn_test_cmd) {
             try {
                 ffmpeg.execute(new String[]{
                         "-re",
@@ -91,6 +91,46 @@ public class MainActivity extends Activity {
                         "-strict",
                         "-2",
                         "rtmp://192.168.0.119:1935/myapp/test"}, new ExecuteBinaryResponseHandler() {
+
+                    @Override
+                    public void onStart() {
+                        Log.i("yuyong", "onStart");
+                    }
+
+                    @Override
+                    public void onProgress(String message) {
+                        Log.i("yuyong", "onProgress-->" + message);
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        Log.i("yuyong", "onFailure-->" + message);
+                    }
+
+                    @Override
+                    public void onSuccess(String message) {
+                        Log.i("yuyong", "onSuccess-->" + message);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        Log.i("yuyong", "onFinish");
+                    }
+                });
+            } catch (FFmpegCommandAlreadyRunningException e) {
+                Log.i("yuyong", "FFmpegCommandAlreadyRunningException-->" + e.getMessage());
+            }
+        }
+        if (v.getId() == R.id.btn_test_devices) {
+            try {
+                ffmpeg.execute(new String[]{
+                        "-list_devices",
+                        "true",
+                        "-f",
+                        "dshow",
+                        "-i",
+                        "dummy",
+                }, new ExecuteBinaryResponseHandler() {
 
                     @Override
                     public void onStart() {

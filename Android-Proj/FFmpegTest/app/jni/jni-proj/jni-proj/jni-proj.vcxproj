@@ -70,6 +70,7 @@
     <ClInclude Include="..\..\tools.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\get_stream_camera.cpp" />
     <ClCompile Include="..\..\get_stream_file.cpp" />
     <ClCompile Include="..\..\test.cpp" />
     <ClCompile Include="..\..\tools.cpp" />

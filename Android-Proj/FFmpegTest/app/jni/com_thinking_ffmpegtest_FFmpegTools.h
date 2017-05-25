@@ -35,7 +35,16 @@ extern "C" {
 	JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFile
 		(JNIEnv *, jclass, jstring, jstring);
 
+	/*
+	 * Class:     com_thinking_ffmpegtest_FFmpegTools
+	 * Method:    getStreamFromCamera
+	 * Signature: (Ljava/lang/String;)V
+	 */
+	JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromCamera
+		(JNIEnv *, jclass, jstring);
+
 #ifdef __cplusplus
 }
 #endif
 #endif
+
