@@ -7,21 +7,32 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 	const char *   _rtmp_add = env->GetStringUTFChars(rtmp_add, false);
 	__android_log_print(ANDROID_LOG_INFO, "yuyong", "from %s to %s", _file_path, _rtmp_add);
 
-
-	AVOutputFormat *ofmt = NULL;
-	//输入和输出的上下文
-	AVFormatContext *ifmt_ctx = NULL;
-	AVFormatContext *ofmt_ctx = NULL;
-	AVPacket pkt;
+	//状态指示
 	int ret;
-	int i;
-	int videoindex = -1;
+	//输出参数
+	AVOutputFormat *ofmt = NULL;
+	AVFormatContext *ofmt_ctx = NULL;
+	//输入参数
+	AVFormatContext *ifmt_ctx = NULL;
+	//传输参数
 	int frame_index = 0;
 	int64_t start_time = 0;
+	int videoindex = -1;
 
+	//注册组件
 	av_register_all();
-	avformat_network_init();
-	//输入
+
+	//初始化输出参数------------------------star
+	avformat_alloc_output_context2(&ofmt_ctx, NULL, "flv", _rtmp_add);
+	if (!ofmt_ctx) {
+		__android_log_print(ANDROID_LOG_INFO, "yuyong", "unknown error fuck");
+		ret = AVERROR_UNKNOWN;
+		goto end;
+	}
+	ofmt = ofmt_ctx->oformat;
+	//初始化输出参数------------------------end
+
+	//初始化输入参数------------------------start
 	if ((ret = avformat_open_input(&ifmt_ctx, _file_path, 0, 0)) < 0)
 	{
 		__android_log_print(ANDROID_LOG_INFO, "yuyong", "cannot open media file");
@@ -31,20 +42,17 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 		__android_log_print(ANDROID_LOG_INFO, "yuyong", "cannot conn server");
 		goto end;
 	}
-	for (i = 0; i < ifmt_ctx->nb_streams; i++)
+	for (int i = 0; i < ifmt_ctx->nb_streams; i++)
 	if (ifmt_ctx->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO){
 		videoindex = i;
 		break;
 	}
 	av_dump_format(ifmt_ctx, 0, _file_path, 0);
-	avformat_alloc_output_context2(&ofmt_ctx, NULL, "flv", _rtmp_add);
-	if (!ofmt_ctx) {
-		__android_log_print(ANDROID_LOG_INFO, "yuyong", "unknown error fuck");
-		ret = AVERROR_UNKNOWN;
-		goto end;
-	}
-	ofmt = ofmt_ctx->oformat;
-	for (i = 0; i < ifmt_ctx->nb_streams; i++) {
+	//初始化输入参数------------------------end
+
+	//建立连接------------------------start
+	avformat_network_init();
+	for (int i = 0; i < ifmt_ctx->nb_streams; i++) {
 		AVStream *in_stream = ifmt_ctx->streams[i];
 		AVStream *out_stream = avformat_new_stream(ofmt_ctx, in_stream->codec->codec);
 		if (!out_stream) {
@@ -70,12 +78,19 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 			goto end;
 		}
 	}
+	//建立连接------------------------end
+
+
+	//写入头部------------------------start
 	ret = avformat_write_header(ofmt_ctx, NULL);
 	if (ret < 0) {
 		__android_log_print(ANDROID_LOG_INFO, "yuyong", "Error occurred when opening output URL");
 		goto end;
 	}
+	//写入头部------------------------end
 
+	//传输数据------------------------start
+	AVPacket pkt;
 	start_time = av_gettime();
 	while (1) {
 		AVStream *in_stream, *out_stream;
@@ -96,9 +111,7 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 			int64_t now_time = av_gettime() - start_time;
 			if (pts_time > now_time)
 				av_usleep(pts_time - now_time);
-
 		}
-
 		in_stream = ifmt_ctx->streams[pkt.stream_index];
 		out_stream = ofmt_ctx->streams[pkt.stream_index];
 		pkt.pts = av_rescale_q_rnd(pkt.pts, in_stream->time_base, out_stream->time_base, (AVRounding)(AV_ROUND_NEAR_INF | AV_ROUND_PASS_MINMAX));
@@ -110,16 +123,15 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 			frame_index++;
 		}
 		ret = av_interleaved_write_frame(ofmt_ctx, &pkt);
-
 		if (ret < 0) {
 			__android_log_print(ANDROID_LOG_INFO, "yuyong", "Error muxing packet");
 			break;
 		}
-
 		av_free_packet(&pkt);
-
 	}
 	av_write_trailer(ofmt_ctx);
+	//传输数据------------------------end
+
 end:
 	avformat_close_input(&ifmt_ctx);
 	if (ofmt_ctx && !(ofmt->flags & AVFMT_NOFILE))
