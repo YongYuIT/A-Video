@@ -67,10 +67,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\com_thinking_ffmpegtest_FFmpegTools.h" />
+    <ClInclude Include="..\..\tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\get_stream_file.cpp" />
     <ClCompile Include="..\..\test.cpp" />
+    <ClCompile Include="..\..\tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Android.mk" />

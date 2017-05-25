@@ -1,4 +1,5 @@
 #include"com_thinking_ffmpegtest_FFmpegTools.h"
+#include"tools.h"
 
 
 JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFile
@@ -42,10 +43,12 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 		__android_log_print(ANDROID_LOG_INFO, "yuyong", "cannot conn server");
 		goto end;
 	}
-	for (int i = 0; i < ifmt_ctx->nb_streams; i++)
-	if (ifmt_ctx->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO){
-		videoindex = i;
-		break;
+	for (int i = 0; i < ifmt_ctx->nb_streams; i++){
+		__android_log_print(ANDROID_LOG_INFO, "yuyong", "codec_type for %i = %s", i, getAVMediaTypeName(ifmt_ctx->streams[i]->codec->codec_type).c_str());
+		if (ifmt_ctx->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO){
+			videoindex = i;
+			break;
+		}
 	}
 	av_dump_format(ifmt_ctx, 0, _file_path, 0);
 	//初始化输入参数------------------------end
@@ -54,6 +57,7 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromFil
 	avformat_network_init();
 	for (int i = 0; i < ifmt_ctx->nb_streams; i++) {
 		AVStream *in_stream = ifmt_ctx->streams[i];
+		__android_log_print(ANDROID_LOG_INFO, "yuyong", "iostream for %i = %s", i, getAVMediaTypeName(in_stream->codec->codec_type).c_str());
 		AVStream *out_stream = avformat_new_stream(ofmt_ctx, in_stream->codec->codec);
 		if (!out_stream) {
 			__android_log_print(ANDROID_LOG_INFO, "yuyong", "Failed allocating output stream");
