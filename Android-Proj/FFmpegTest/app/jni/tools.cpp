@@ -22,3 +22,7 @@ string getAVMediaTypeName(int type){
 		return "ERROR_TYPR";
 	}
 }
+
+void print_ffmpeg_log(void *ptr, int level, const char* fmt, va_list vl){
+	__android_log_print(ANDROID_LOG_INFO, "yuyong ffmpeg", fmt, vl);
+}
