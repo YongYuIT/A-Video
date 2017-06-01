@@ -72,6 +72,7 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_setStreamFromCam
 	}
 	//选用H264作为编码器
 	//如果找不到H264编译器，参考http://blog.csdn.net/PZ0605/article/details/52958918?locationNum=6&fps=1
+	//http://zhengxiaoyong.me/2016/11/13/%E5%88%9D%E8%AF%86FFmpeg%E7%BC%96%E8%AF%91%E9%82%A3%E4%BA%9B%E4%BA%8B/
 	pCodec = avcodec_find_encoder(AV_CODEC_ID_H264);
 	if (!pCodec)
 	{
