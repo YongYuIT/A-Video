@@ -36,6 +36,16 @@ LOCAL_SRC_FILES := G:\WebRtc\FFmpeg-SDK\arm\lib\libswscale-4.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := x264
+LOCAL_SRC_FILES := G:\WebRtc\FFmpeg-SDK\arm\lib\libx264-150.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := postproc
+LOCAL_SRC_FILES := G:\WebRtc\FFmpeg-SDK\arm\lib\libpostproc-54.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE    := com_thinking_ffmpegtest
 LOCAL_SRC_FILES := test.cpp \
     get_stream_file.cpp\
@@ -44,5 +54,5 @@ LOCAL_SRC_FILES := test.cpp \
 
 LOCAL_C_INCLUDES += G:\WebRtc\FFmpeg-SDK\arm\include
 LOCAL_LDLIBS +=  -llog -ldl -lz
-LOCAL_SHARED_LIBRARIES := avcodec avdevice avfilter avformat avutil swresample swscale
+LOCAL_SHARED_LIBRARIES := avcodec avdevice avfilter avformat avutil swresample swscale x264 postproc
 include $(BUILD_SHARED_LIBRARY)

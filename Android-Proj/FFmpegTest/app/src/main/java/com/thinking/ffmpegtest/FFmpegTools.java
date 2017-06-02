@@ -13,6 +13,8 @@ public class FFmpegTools {
         System.loadLibrary("avutil-55");
         System.loadLibrary("swresample-2");
         System.loadLibrary("swscale-4");
+        System.loadLibrary("x264-150");
+        System.loadLibrary("postproc-54");
         System.loadLibrary("com_thinking_ffmpegtest");
     }
 

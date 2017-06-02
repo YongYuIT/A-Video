@@ -20,7 +20,7 @@ public class FFmpegActivity extends Activity {
             FFmpegTools.getStreamFromFile("/sdcard/DCIM/Camera/test.flv", "rtmp://192.168.0.130:1935/myapp/test");
         }
         if (v.getId() == R.id.btn_test_steam_camera) {
-            FFmpegTools.setStreamFromCameraInit(100, 100, "rtmp://192.168.0.130:1935/myapp/test");
+            FFmpegTools.setStreamFromCameraInit(100, 100, "rtmp://192.168.42.248/myapp/test");
             FFmpegTools.getStreamFromCamera();
         }
     }
