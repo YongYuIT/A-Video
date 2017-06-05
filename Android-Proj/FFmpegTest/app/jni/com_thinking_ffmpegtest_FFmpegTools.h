@@ -19,7 +19,6 @@ extern "C" {
 #include<libavformat\avformat.h>
 #include<libavutil\time.h>
 #include "libavutil/imgutils.h"
-
 	/*
 	 * Class:     com_thinking_ffmpegtest_FFmpegTools
 	 * Method:    test
@@ -51,6 +50,7 @@ extern "C" {
 	 */
 	JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_setStreamFromCameraInit
 		(JNIEnv *, jclass, jint, jint, jstring);
+
 
 #ifdef __cplusplus
 }

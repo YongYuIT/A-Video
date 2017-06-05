@@ -21,7 +21,6 @@ public class FFmpegActivity extends Activity {
         }
         if (v.getId() == R.id.btn_test_steam_camera) {
             FFmpegTools.setStreamFromCameraInit(100, 100, "rtmp://192.168.42.248/myapp/test");
-            FFmpegTools.getStreamFromCamera();
         }
     }
 }

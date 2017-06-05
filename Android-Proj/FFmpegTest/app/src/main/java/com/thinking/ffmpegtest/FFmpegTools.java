@@ -25,6 +25,7 @@ public class FFmpegTools {
     public static native void getStreamFromCamera();
 
     public static native void setStreamFromCameraInit(int height, int width, String rtmp);
+
 }
-//javah -d G:\WebRtc\20170526001\A-Video\Android-Proj\FFmpegTest\app\jni -classpath G:\WebRtc\20170526001\A-Video\Android-Proj\FFmpegTest\app\build\intermediates\classes\debug com.thinking.ffmpegtest.FFmpegTools
+//javah -d G:\WebRtc\20170605001\A-Video\Android-Proj\FFmpegTest\app\jni -classpath G:\WebRtc\20170605001\A-Video\Android-Proj\FFmpegTest\app\build\intermediates\classes\debug com.thinking.ffmpegtest.FFmpegTools
 
