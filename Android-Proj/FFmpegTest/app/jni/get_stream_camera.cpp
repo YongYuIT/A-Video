@@ -18,14 +18,14 @@ static AVCodecContext *pCodecCtx = NULL;
 static AVStream *out_stream = NULL;
 static AVFrame *yuv_frame;
 static int64_t start_time;
+//static AVPacket pkt;
 
 static int frame_count;
-AVPacket pkt;
 
 JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromCamera
 (JNIEnv * env, jclass j_class)
 {
-
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "push start");
 	//----------------------------------------------------------------------------------------------------------------------------------------start
 	jclass cache_class = env->FindClass("com/thinking/ffmpegtest/FrameNIOCache");
 	//获取java缓冲区
@@ -41,27 +41,38 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromCam
 		*(yuv_frame->data[2] + i) = *(_output + y_length + i * 2);
 		*(yuv_frame->data[1] + i) = *(_output + y_length + i * 2 + 1);
 	}
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "copy frame data finish");
 	yuv_frame->format = pCodecCtx->pix_fmt;
 	yuv_frame->width = width;
 	yuv_frame->height = height;
 	yuv_frame->pts = (1.0 / 30) * 90 * frame_count;
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "frame settings finish");
 
+	AVPacket pkt;
+	av_init_packet(&pkt);
 	pkt.data = NULL;
 	pkt.size = 0;
-	av_init_packet(&pkt);
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "going to pack");
+
+	if (1 == 0)
+		return;
 
 	//进行编码
 	int got_packet = 0;
 	int ret = encode(pCodecCtx, &pkt, yuv_frame, &got_packet);
-	int resultCode = 0;
 	if (ret < 0) {
-		resultCode = -1;
-		__android_log_print(ANDROID_LOG_INFO, "yuyong", "encode error");
+		__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "encode error");
 		return;
 	}
 
+
+	if (1 == 1)
+		return;
+
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "encode finish %i", got_packet);
+
 	if (got_packet) {
-		__android_log_print(ANDROID_LOG_INFO, "yuyong", "encode frame : %d\tsize : %d", frame_count, pkt.size);
+		__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "encode frame : %i size : %i", frame_count, pkt.size);
 		frame_count++;
 		pkt.stream_index = out_stream->index;
 
@@ -85,11 +96,11 @@ JNIEXPORT void JNICALL Java_com_thinking_ffmpegtest_FFmpegTools_getStreamFromCam
 
 		ret = av_interleaved_write_frame(ofmt_ctx, &pkt);
 		if (ret < 0) {
-			__android_log_print(ANDROID_LOG_INFO, "yuyong", "error muxing packet");;
-			resultCode = -1;
+			__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "error muxing packet");
 			return;
 		}
 		av_packet_unref(&pkt);
+		__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "push success");
 	}
 
 }

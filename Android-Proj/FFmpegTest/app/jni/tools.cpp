@@ -28,18 +28,25 @@ void print_ffmpeg_log(void *ptr, int level, const char* fmt, va_list vl){
 }
 
 int encode(AVCodecContext *pCodecCtx, AVPacket* pPkt, AVFrame *pFrame, int *got_packet){
+
 	int ret;
 	*got_packet = 0;
 	ret = avcodec_send_frame(pCodecCtx, pFrame);
-	if (ret <0 && ret != AVERROR_EOF) {
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "avcodec_send_frame %i", ret);
+	if (ret < 0 && ret != AVERROR_EOF) {
 		return ret;
 	}
+
 	ret = avcodec_receive_packet(pCodecCtx, pPkt);
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "avcodec_receive_packet %i of (%i %i %i)", ret, AVERROR(EAGAIN), AVERROR_EOF, AVERROR(EINVAL));
 	if (ret < 0 && ret != AVERROR(EAGAIN)) {
 		return ret;
 	}
+
 	if (ret >= 0) {
+		__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "encode success");
 		*got_packet = 1;
 	}
+	__android_log_print(ANDROID_LOG_INFO, "yuyong_push", "encode go back %i", ret);
 	return 0;
 }

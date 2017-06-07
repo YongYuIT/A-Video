@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.TextureView;
 import android.view.ViewGroup;
 
@@ -46,9 +47,12 @@ public class CameraActivity extends Activity {
         }
     };
 
-    protected void doWhenFrameReady(byte[] data, Camera camera) {
+    protected synchronized void doWhenFrameReady(byte[] data, Camera camera) {
+        Log.i("yuyong", "size start-->" + camera.getParameters().getPreviewSize().width + "," + camera.getParameters().getPreviewSize().height);
         FrameNIOCache.mCache.put(data, 0, data.length);
-        //FFmpegTools.getStreamFromCamera();
+        FFmpegTools.getStreamFromCamera();
+        FrameNIOCache.mCache.clear();
+        Log.i("yuyong", "size end-->" + camera.getParameters().getPreviewSize().width + "," + camera.getParameters().getPreviewSize().height);
     }
 
     @Override
@@ -84,7 +88,6 @@ public class CameraActivity extends Activity {
             txt_view.setLayoutParams(t_params);
 
             mBuf = new byte[mCamera.getParameters().getPreviewSize().width * mCamera.getParameters().getPreviewSize().height * 3 / 2];
-            FrameNIOCache.setCache(mCamera.getParameters().getPreviewSize().width, mCamera.getParameters().getPreviewSize().height);
             mCamera.addCallbackBuffer(mBuf);
             mCamera.setPreviewCallbackWithBuffer(mCameraCallBack);
             mCamera.setPreviewTexture(surface);
@@ -103,4 +106,3 @@ public class CameraActivity extends Activity {
         }
     }
 }
-

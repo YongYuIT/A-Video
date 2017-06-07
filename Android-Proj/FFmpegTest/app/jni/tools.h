@@ -1,6 +1,7 @@
 #ifndef COM_THINKING_FFMPEGTEST_TOOLS_H
 #define COM_THINKING_FFMPEGTEST_TOOLS_H
 
+#include"com_thinking_ffmpegtest_FFmpegTools.h"
 #include<iostream>
 using namespace std;
 
