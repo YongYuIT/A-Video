@@ -1,4 +1,4 @@
-package com.thinking.cameralive;
+package com.thinking.cameralive.old_func;
 
 /**
  * Created by Yu Yong on 2017/6/7.
@@ -28,4 +28,4 @@ public class FFmpeg {
     public static native int streamerRelease();
 }
 
-//javah -d G:\WebRtc\20170607001\A-Video\Android-Proj\CameraLive\app\jni -classpath G:\WebRtc\20170607001\A-Video\Android-Proj\CameraLive\app\build\intermediates\classes\debug com.thinking.cameralive.FFmpeg
+//javah -d G:\WebRtc\20170607003\A-Video\Android-Proj\CameraLive\app\jni -classpath G:\WebRtc\20170607003\A-Video\Android-Proj\CameraLive\app\build\intermediates\classes\debug com.thinking.cameralive.old_func.FFmpeg

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="com.thinking.cameralive.CameraActivity">
+    tools:context="com.thinking.cameralive.new_func.CameraActivity">
 
     <TextureView
         android:id="@+id/txt_view"

@@ -1,4 +1,4 @@
-package com.thinking.cameralive;
+package com.thinking.cameralive.old_func;
 
 import android.app.Activity;
 import android.graphics.ImageFormat;
@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.thinking.cameralive.R;
 
 import java.lang.ref.WeakReference;
 

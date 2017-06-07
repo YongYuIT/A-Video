@@ -1,4 +1,4 @@
-package com.thinking.cameralive;
+package com.thinking.cameralive.new_func;
 
 import android.app.Activity;
 import android.graphics.ImageFormat;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.ViewGroup;
+
+import com.thinking.cameralive.R;
+import com.thinking.cameralive.old_func.FFmpeg;
 
 import java.io.IOException;
 

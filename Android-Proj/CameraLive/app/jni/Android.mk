@@ -47,7 +47,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE    := com_thinking_ffmpegtest
-LOCAL_SRC_FILES := com_thinking_cameralive_FFmpeg.cpp
+LOCAL_SRC_FILES := com_thinking_cameralive_old_func_FFmpeg.cpp
 
 LOCAL_C_INCLUDES += G:\WebRtc\FFmpeg-SDK\arm\include
 LOCAL_LDLIBS +=  -llog -ldl -lz

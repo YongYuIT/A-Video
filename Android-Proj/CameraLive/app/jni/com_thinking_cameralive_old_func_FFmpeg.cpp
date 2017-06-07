@@ -1,4 +1,4 @@
-#include"com_thinking_cameralive_FFmpeg.h"
+#include "com_thinking_cameralive_old_func_FFmpeg.h"
 
 AVFormatContext *ofmt_ctx = NULL;
 AVStream *out_stream = NULL;

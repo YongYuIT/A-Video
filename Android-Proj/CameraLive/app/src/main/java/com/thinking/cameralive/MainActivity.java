@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.thinking.cameralive.new_func.CameraActivity;
+import com.thinking.cameralive.old_func.CameraPushActivity;
+
 public class MainActivity extends Activity {
 
     @Override

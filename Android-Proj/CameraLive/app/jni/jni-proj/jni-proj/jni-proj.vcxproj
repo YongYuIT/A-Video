@@ -66,10 +66,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\com_thinking_cameralive_FFmpeg.h" />
+    <ClCompile Include="..\..\com_thinking_cameralive_old_func_FFmpeg.cpp" />
+    <ClCompile Include="..\..\com_thinking_cameralive_new_func_FFmpeg.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\com_thinking_cameralive_FFmpeg.cpp" />
+    <ClInclude Include="..\..\com_thinking_cameralive_new_func_FFmpeg.h" />
+    <ClInclude Include="..\..\com_thinking_cameralive_old_func_FFmpeg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
