@@ -14,8 +14,12 @@ public class MainActivity extends Activity {
     }
 
     public void onClick(View view) {
-        if (view.getId() == R.id.btn_live_push) {
+        if (view.getId() == R.id.btn_live_push_1) {
             Intent liveIntent = new Intent(this, CameraPushActivity.class);
+            startActivity(liveIntent);
+        }
+        if (view.getId() == R.id.btn_live_push_2) {
+            Intent liveIntent = new Intent(this, CameraActivity.class);
             startActivity(liveIntent);
         }
     }

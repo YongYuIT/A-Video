@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CameraPushActivity"></activity>
+        <activity android:name=".CameraPushActivity" />
+        <activity
+            android:name=".CameraActivity"
+            android:label="@string/title_activity_camera"></activity>
     </application>
 
 </manifest>
