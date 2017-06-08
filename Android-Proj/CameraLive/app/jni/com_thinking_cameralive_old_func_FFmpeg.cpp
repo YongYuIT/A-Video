@@ -53,7 +53,7 @@ int encode(AVCodecContext *pCodecCtx, AVPacket* pPkt, AVFrame *pFrame, int *got_
 	return 0;
 }
 
-JNIEXPORT jint JNICALL Java_com_thinking_cameralive_FFmpeg_streamerRelease
+JNIEXPORT jint JNICALL Java_com_thinking_cameralive_old_1func_FFmpeg_streamerRelease
 (JNIEnv *env, jclass)
 {
 	// TODO
@@ -76,7 +76,7 @@ JNIEXPORT jint JNICALL Java_com_thinking_cameralive_FFmpeg_streamerRelease
 	}
 }
 
-JNIEXPORT jint JNICALL Java_com_thinking_cameralive_FFmpeg_streamerFlush
+JNIEXPORT jint JNICALL Java_com_thinking_cameralive_old_1func_FFmpeg_streamerFlush
 (JNIEnv *, jclass){
 	// TODO
 	int ret;
@@ -126,7 +126,7 @@ JNIEXPORT jint JNICALL Java_com_thinking_cameralive_FFmpeg_streamerFlush
 	return 0;
 }
 
-JNIEXPORT jint JNICALL Java_com_thinking_cameralive_FFmpeg_streamerHandle
+JNIEXPORT jint JNICALL Java_com_thinking_cameralive_old_1func_FFmpeg_streamerHandle
 (JNIEnv * env, jclass, jbyteArray data_){
 	jbyte *data = env->GetByteArrayElements(data_, NULL);
 
@@ -200,11 +200,11 @@ end:
 	return resultCode;
 }
 
-JNIEXPORT jint JNICALL  Java_com_thinking_cameralive_FFmpeg_streamerInit
+JNIEXPORT jint JNICALL  Java_com_thinking_cameralive_old_1func_FFmpeg_streamerInit
 (JNIEnv *env, jclass, jint width, jint height) {
 	// TODO
 	int ret = 0;
-	const char *address = "rtmp://192.168.0.103/myapp/test";
+	const char *address = "rtmp://192.168.0.116/myapp/test";
 
 	src_width = width;
 	src_height = height;

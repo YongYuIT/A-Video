@@ -11,12 +11,6 @@
 #ifndef _Included_com_thinking_ffmpegtest_FFmpegTools
 #define _Included_com_thinking_ffmpegtest_FFmpegTools
 
-#define LOG_TAG "yuyong"
-
-#define LOGE(format, ...)  __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, format, ##__VA_ARGS__)
-#define LOGI(format, ...)  __android_log_print(ANDROID_LOG_INFO,  LOG_TAG, format, ##__VA_ARGS__)
-
-
 #ifdef __cplusplus
 extern "C" {
 #endif

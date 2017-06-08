@@ -10,7 +10,6 @@ import android.view.TextureView;
 import android.view.ViewGroup;
 
 import com.thinking.cameralive.R;
-import com.thinking.cameralive.old_func.FFmpeg;
 
 import java.io.IOException;
 
@@ -23,7 +22,7 @@ public class CameraActivity extends Activity {
     private Camera mCamera;
     private byte mBuf[];
 
-    private int isInitSuccess;
+    private boolean isInitSuccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,7 @@ public class CameraActivity extends Activity {
 
     private void OnViewReady(SurfaceTexture surface) {
 
-        isInitSuccess = FFmpeg.streamerInit(width, height);
+        isInitSuccess = FFmpeg.ffmpegInit(width, height, "rtmp://192.168.0.116/myapp/test");
 
         try {
             mCamera = Camera.open(1);
@@ -109,7 +108,7 @@ public class CameraActivity extends Activity {
 
     private void onFeame(byte[] data, Camera camera) {
         Log.i("yuyong", "onFeame");
-        FFmpeg.streamerHandle(data);
+        FFmpeg.ffmpegPush(data);
     }
 
 }

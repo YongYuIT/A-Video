@@ -14,17 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".old_func.CameraPushActivity" />
+        <activity
+            android:name=".old_func.CameraPushActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".new_func.CameraActivity"
-            android:label="@string/title_activity_camera"></activity>
+            android:label="@string/title_activity_camera"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
