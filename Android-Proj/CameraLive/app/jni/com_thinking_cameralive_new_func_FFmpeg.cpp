@@ -145,7 +145,7 @@ JNIEXPORT jint JNICALL Java_com_thinking_cameralive_new_1func_FFmpeg_ffmpegPush
 	jbyte *data = env->GetByteArrayElements(input_datas, NULL);
 
 	memcpy(yuv_frame->data[0], data, y_length);//拷贝Y部分数据
-	for (int i = 0; i < uv_length; i++) {//拷贝UV部分数据
+	for (int i = 0; i < uv_length; i++) {      //拷贝UV部分数据
 		*(yuv_frame->data[2] + i) = *(data + y_length + i * 2);
 		*(yuv_frame->data[1] + i) = *(data + y_length + i * 2 + 1);
 	}
